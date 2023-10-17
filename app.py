@@ -1,6 +1,9 @@
 from web import start_app
 
-app = start_app()
+'''
+@Author: Claudia Landeira
+'''
+app = start_app() 
 
 if __name__ == '__main__':
     from waitress import serve
