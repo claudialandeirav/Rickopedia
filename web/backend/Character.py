@@ -28,3 +28,70 @@ class Character:
             url = f'{Global.getUrlCharacter()}?{filter}'
 
         return Global.data(url)
+    
+    def info(self, data):
+        return data['info']
+    
+    def count(self, data):
+        return data['count']
+    
+    def pages(self, data):
+        return data['pages']
+    
+    def results(self, data):
+        return data['results']
+    
+    def id(self, data):
+        return data['id']
+    
+    def name(self, data):
+        return data['name']
+    
+    def status(self, data):
+        return data['status']
+    
+    def species(self, data):
+        return data['species']
+    
+    def type(self, data):
+        return data['type']
+    
+    def gender(self, data):
+        return data['gender']
+    
+    def origin(self, data):
+        origin = data['origin']
+        name = Character.nameOrigin(origin)
+        url = Character.urlOrigin(origin)
+
+        info = [name, url]
+
+        return info
+    
+    def nameOrigin(self, data):
+        return data['name']
+    
+    def urlOrigin(self, data):
+        return data['url']
+    
+    def location(self, data):
+        location = data['location']
+        name = Character.nameLocation(location)
+        url = Character.urlLocation(location)
+
+        info = [name, url]
+
+        return info
+    
+    def nameLocation(self, data):
+        return data['name']
+    
+    def urlLocation(self, data):
+        return data['url']
+    
+    def image(self, data):
+        return data['image']
+    
+    def episode(self, data):
+        return data['episode']
+    
