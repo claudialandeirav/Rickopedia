@@ -24,3 +24,34 @@ class Episode:
             url = f'{Global.getUrlEpisode()}?{filter}'
 
         return Global.data(url)
+    
+    def info(self, data):
+        info = data['info']
+        count = Episode.count(info)
+        pages = Episode.pages(info)
+        
+        return [count, pages]
+    
+    def count(self, data):
+        return data['count']
+    
+    def pages(self, data):
+        return data['pages']
+    
+    def results(self, data):
+        return data['results']
+    
+    def id(self, data):
+        return data['id']
+    
+    def name(self, data):
+        return data['name']
+    
+    def air_date(self, data):
+        return data['air_date']
+    
+    def episode(self, data):
+        return data['episode']
+    
+    def characters(self, data):
+        return data['characters']
