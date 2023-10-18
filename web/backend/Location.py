@@ -22,3 +22,35 @@ class Location:
             url = f'{Global.getUrlLocation()}?{filter}'
 
         return Global.data(url)
+    
+
+    def info(self, data):
+        info = data['info']
+        count = Location.count(info)
+        pages = Location.pages(info)
+        
+        return [count, pages]
+    
+    def count(self, data):
+        return data['count']
+    
+    def pages(self, data):
+        return data['pages']
+    
+    def results(self, data):
+        return data['results']
+    
+    def id(self, data):
+        return data['id']
+    
+    def name(self, data):
+        return data['name']
+    
+    def type(self, data):
+        return data['type']
+    
+    def dimension(self, data):
+        return data['dimension']
+    
+    def residents(self, data):
+        return data['residents']

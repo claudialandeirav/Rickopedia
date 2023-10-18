@@ -30,7 +30,11 @@ class Character:
         return Global.data(url)
     
     def info(self, data):
-        return data['info']
+        info = data['info']
+        count = Character.count(info)
+        pages = Character.pages(info)
+
+        return [count, pages]
     
     def count(self, data):
         return data['count']
@@ -64,9 +68,7 @@ class Character:
         name = Character.nameOrigin(origin)
         url = Character.urlOrigin(origin)
 
-        info = [name, url]
-
-        return info
+        return [name, url]
     
     def nameOrigin(self, data):
         return data['name']
@@ -79,9 +81,7 @@ class Character:
         name = Character.nameLocation(location)
         url = Character.urlLocation(location)
 
-        info = [name, url]
-
-        return info
+        return [name, url]
     
     def nameLocation(self, data):
         return data['name']
