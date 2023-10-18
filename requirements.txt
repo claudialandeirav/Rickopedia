@@ -1,3 +1,4 @@
 # Requirements imports
 waitress
 flask
+requests
