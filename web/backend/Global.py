@@ -42,7 +42,7 @@ class Global:
 
     It has the responsability of do the request by url and return the data on json format
     '''
-    def data(self, url):
+    def data(url):
         response = requests.get(url)
 
         if response.status_code == 200:

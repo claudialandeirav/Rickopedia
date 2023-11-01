@@ -14,7 +14,7 @@ class Episode:
 
     It has the responsability of get all character of Rick and Morty
     '''
-    def get_all(self):
+    def get_all():
         return Global.data(Global.getUrlEpisode())
     
     '''
@@ -23,7 +23,7 @@ class Episode:
 
     It has the responsability of get a character by id
     '''
-    def get(self, idEpisode):
+    def get(idEpisode):
         return Global.data(f'{Global.getUrlEpisode()}{idEpisode}')
     
     '''
@@ -32,7 +32,7 @@ class Episode:
 
     It has the responsability of get the information filtering by name, status, species, type or gender
     '''
-    def filter(self, name=None, air_date=None, episode=None):
+    def filter(name=None, air_date=None, episode=None):
         param = {}
 
         if name:
@@ -55,7 +55,7 @@ class Episode:
 
     It has the responsability of get info param on json data
     '''
-    def info(self, data):
+    def info(data):
         info = data['info']
         count = Episode.count(info)
         pages = Episode.pages(info)
@@ -68,7 +68,7 @@ class Episode:
 
     It has the responsability of get count param of info param on json data
     '''
-    def count(self, data):
+    def count(data):
         return data['count']
     
     '''
@@ -77,7 +77,7 @@ class Episode:
 
     It has the responsability of get pages param of info param on json data
     '''
-    def pages(self, data):
+    def pages(data):
         return data['pages']
     
     '''
@@ -86,7 +86,7 @@ class Episode:
 
     It has the responsability of get results param of info param on json data
     '''
-    def results(self, data):
+    def results(data):
         return data['results']
     
     '''
@@ -95,7 +95,7 @@ class Episode:
 
     It has the responsability of get id param of info param on json data
     '''
-    def id(self, data):
+    def id(data):
         return data['id']
     
     '''
@@ -104,7 +104,7 @@ class Episode:
 
     It has the responsability of get name param of info param on json data
     '''
-    def name(self, data):
+    def name(data):
         return data['name']
     
     '''
@@ -113,7 +113,7 @@ class Episode:
 
     It has the responsability of get air date param of info param on json data
     '''
-    def air_date(self, data):
+    def air_date(data):
         return data['air_date']
     
     '''
@@ -122,7 +122,7 @@ class Episode:
 
     It has the responsability of get episode param of info param on json data
     '''
-    def episode(self, data):
+    def episode(data):
         return data['episode']
     
     '''
@@ -131,5 +131,5 @@ class Episode:
 
     It has the responsability of get characters param of info param on json data
     '''
-    def characters(self, data):
+    def characters(data):
         return data['characters']

@@ -14,7 +14,7 @@ class Location:
 
     It has the responsability of get all character of Rick and Morty
     '''
-    def get_all(self):
+    def get_all():
         return Global.data(Global.getUrlLocation())
     
     '''
@@ -23,7 +23,7 @@ class Location:
 
     It has the responsability of get a character by id
     '''
-    def get(self, idLocation):
+    def get(idLocation):
         return Global.data(f'{Global.getUrlLocation()}{idLocation}')
     
     '''
@@ -32,7 +32,7 @@ class Location:
 
     It has the responsability of get the information filtering by name, status, species, type or gender
     '''
-    def filter(self, name=None, type=None):
+    def filter(name=None, type=None):
         param = {}
 
         if name:
@@ -53,7 +53,7 @@ class Location:
 
     It has the responsability of get info param on json data
     '''
-    def info(self, data):
+    def info(data):
         info = data['info']
         count = Location.count(info)
         pages = Location.pages(info)
@@ -66,7 +66,7 @@ class Location:
 
     It has the responsability of get count param of info param on json data
     '''
-    def count(self, data):
+    def count(data):
         return data['count']
     
     '''
@@ -75,7 +75,7 @@ class Location:
 
     It has the responsability of get id param on json data
     '''
-    def id(self, data):
+    def id(data):
         return data['pages']
     
     '''
@@ -84,7 +84,7 @@ class Location:
 
     It has the responsability of get results param of info param on json data
     '''
-    def results(self, data):
+    def results(data):
         return data['results']
     
     '''
@@ -93,7 +93,7 @@ class Location:
 
     It has the responsability of get id param of info param on json data
     '''
-    def id(self, data):
+    def id(data):
         return data['id']
     
     '''
@@ -102,7 +102,7 @@ class Location:
 
     It has the responsability of get name param of info param on json data
     '''
-    def name(self, data):
+    def name(data):
         return data['name']
     
     '''
@@ -111,7 +111,7 @@ class Location:
 
     It has the responsability of get type param of info param on json data
     '''
-    def type(self, data):
+    def type(data):
         return data['type']
     
     '''
@@ -120,7 +120,7 @@ class Location:
 
     It has the responsability of get dimension param of info param on json data
     '''
-    def dimension(self, data):
+    def dimension(data):
         return data['dimension']
     
     '''
@@ -129,5 +129,5 @@ class Location:
 
     It has the responsability of get residents param of info param on json data
     '''
-    def residents(self, data):
+    def residents(data):
         return data['residents']

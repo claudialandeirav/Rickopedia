@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+{% include 'global/header.html' %}
+
+<body>
+    <div>
+        <h1>Welcome to Rickopedia!</h1>
+    </div>
+
+    <div>
+        <div>
+            <h2>Character</h2>
+            <div>
+                <form enctype="multipart/form-data" method="post" action="/getCharacter">
+                    <input type="text" name="character" placeholder="Character number">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <h2>Episode</h2>
+            <div>
+                <form enctype="multipart/form-data" method="post" action="/getEpisode">
+                    <input type="text" name="episode" placeholder="Episode number">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <h2>Location</h2>
+            <div>
+                <form enctype="multipart/form-data" method="post" action="/getLocation">
+                    <input type="text" name="location" placeholder="Location number">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultado">
+        {{ resultado }}
+    </div>
+</body>
+</html>

@@ -14,7 +14,7 @@ class Character:
 
     It has the responsability of get all character of Rick and Morty
     '''
-    def get_all(self):
+    def get_all():
         return Global.data(Global.getUrlCharacter())
     
     '''
@@ -23,7 +23,7 @@ class Character:
 
     It has the responsability of get a character by id
     '''
-    def get(self, idCharacter):
+    def get(idCharacter):
         return Global.data(f"{Global.getUrlCharacter()}{idCharacter}")
     
     '''
@@ -32,7 +32,7 @@ class Character:
 
     It has the responsability of get the information filtering by name, status, species, type or gender
     '''
-    def filter(self, name=None, status=None, species=None, type=None, gender=None):        
+    def filter(name=None, status=None, species=None, type=None, gender=None):        
         param = {}
 
         if name:
@@ -59,7 +59,7 @@ class Character:
 
     It has the responsability of get info param on json data
     '''
-    def info(self, data):
+    def info(data):
         info = data['info']
         count = Character.count(info)
         pages = Character.pages(info)
@@ -72,7 +72,7 @@ class Character:
 
     It has the responsability of get origin param of info param on json data
     '''
-    def origin(self, data):
+    def origin(data):
         origin = data['origin']
         name = Character.name(origin)
         url = Character.url(origin)
@@ -85,7 +85,7 @@ class Character:
 
     It has the responsability of get location param of info param on json data
     '''
-    def location(self, data):
+    def location(data):
         location = data['location']
         name = Character.name(location)
         url = Character.url(location)
@@ -98,7 +98,7 @@ class Character:
 
     It has the responsability of get results param of info param on json data
     '''
-    def results(self, data):
+    def results(data):
         return data['results']
     
     '''
@@ -107,7 +107,7 @@ class Character:
 
     It has the responsability of get count param of info param on json data
     '''
-    def count(self, data):
+    def count(data):
         return data['count']
     
     '''
@@ -116,7 +116,7 @@ class Character:
 
     It has the responsability of get pages param of info param on json data
     '''
-    def pages(self, data):
+    def pages(data):
         return data['pages']
     
     '''
@@ -125,7 +125,7 @@ class Character:
 
     It has the responsability of get id param of info param on json data
     '''
-    def id(self, data):
+    def id(data):
         return data['id']
     
     '''
@@ -134,7 +134,7 @@ class Character:
 
     It has the responsability of get name param of info param on json data
     '''
-    def name(self, data):
+    def name(data):
         return data['name']
     
     '''
@@ -143,7 +143,7 @@ class Character:
 
     It has the responsability of get url param of info param on json data
     '''
-    def url(self, data):
+    def url(data):
         return data['url']
     
     '''
@@ -152,7 +152,7 @@ class Character:
 
     It has the responsability of get status param of info param on json data
     '''
-    def status(self, data):
+    def status(data):
         return data['status']
     
     '''
@@ -161,7 +161,7 @@ class Character:
 
     It has the responsability of get species param of info param on json data
     '''
-    def species(self, data):
+    def species(data):
         return data['species']
     
     '''
@@ -170,7 +170,7 @@ class Character:
 
     It has the responsability of get type param of info param on json data
     '''
-    def type(self, data):
+    def type(data):
         return data['type']
     
     '''
@@ -179,7 +179,7 @@ class Character:
 
     It has the responsability of get gender param of info param on json data
     '''
-    def gender(self, data):
+    def gender(data):
         return data['gender']
     
     '''
@@ -188,7 +188,7 @@ class Character:
 
     It has the responsability of get image param of info param on json data
     '''    
-    def image(self, data):
+    def image(data):
         return data['image']
     
     '''
@@ -197,6 +197,6 @@ class Character:
 
     It has the responsability of get episode param of info param on json data
     '''
-    def episode(self, data):
+    def episode(data):
         return data['episode']
     
