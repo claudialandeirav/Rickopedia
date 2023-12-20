@@ -10,6 +10,10 @@ def start_app():
     app = Flask(__name__, static_folder='static')
     app.secret_key='estoesunaclavesupersecreta'
 
+    @app.route('/', methods=['GET'])
+    def home():
+        return render_template('paginainicio.html')
+    
     @app.route('/testBackend', methods=['GET', 'POST'])
     def testBackend(resultado=None):
         return render_template('testBackend.html', resultado=resultado)
@@ -33,13 +37,5 @@ def start_app():
             location=request.args.get('location')
             return redirect(url_for('testBackend', resultado=Location.name(Location.get(idLocation=location))))
 
-
-
-
-    @app.route('/', methods=['GET'])
-    def home():
-        return render_template('paginainicio.html')
-    
-    
 
     return app

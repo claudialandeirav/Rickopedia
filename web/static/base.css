@@ -1,0 +1,49 @@
+@import url('colores.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+
+body {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+
+    background-image: url(images/fondoRickMorty.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: center;
+    opacity: 20%;
+}
+
+h1 {
+    font-size: 100px;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--emerald-950);
+    text-align: center;
+}
+
+h2 {
+    font-size: 36px;
+    text-transform: capitalize;
+}
+
+h3 {
+    font-size: 32px;
+    text-transform: capitalize;
+}
+
+h4 {
+    font-size: 28px;
+    text-transform: capitalize;
+}
+
+h5 {
+    font-size: 24px;
+    text-transform: capitalize;
+}
+
+h6{
+    font-size: 20px;
+    text-transform: capitalize;
+}
