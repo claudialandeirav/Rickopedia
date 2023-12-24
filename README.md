@@ -1,1 +1,1 @@
-<img href="" src="web/static/images/cabeceraGit.png" alt="">
+<img href="" src="docs/images/RickAndMorty_Rickopedia.png" alt="">
