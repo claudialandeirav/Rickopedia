@@ -12,30 +12,6 @@ def start_app():
 
     @app.route('/', methods=['GET'])
     def home():
-        return render_template('paginainicio.html')
-    
-    @app.route('/testBackend', methods=['GET', 'POST'])
-    def testBackend(resultado=None):
-        return render_template('testBackend.html', resultado=resultado)
-            
-    
-    @app.route('/getCharacter', methods=['GET', 'POST'])
-    def getCharacter():
-        if request.method == 'POST':
-            character=request.args.get('character')
-            return redirect(url_for('testBackend', resultado=Character.name(Character.get(idCharacter=character))))
-    
-    @app.route('/getEpisode', methods=['GET', 'POST'])
-    def getEpisode():
-        if request.method == 'POST':
-            episode=request.args.get('episode')
-            return redirect(url_for('testBackend', resultado=Episode.name(Episode.get(idEpisode=episode))))
-    
-    @app.route('/getLocation', methods=['GET', 'POST'])
-    def getLocation():
-        if request.method == 'POST':
-            location=request.args.get('location')
-            return redirect(url_for('testBackend', resultado=Location.name(Location.get(idLocation=location))))
-
+        return render_template('home.html')
 
     return app

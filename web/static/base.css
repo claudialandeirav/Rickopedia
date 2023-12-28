@@ -1,49 +1,159 @@
 @import url('colores.css');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 body {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Patrick Hand', cursive;
     font-size: 14px;
-
-    background-image: url(images/fondoRickMorty.png);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: contain;
-    background-position: center;
-    opacity: 20%;
+    text-transform: capitalize;
+    text-align: center;
+    color: var(--negro);
 }
 
+body::after {
+    content: "";
+    background: url('https://ae01.alicdn.com/kf/HTB1I_FvOXXXXXXCaFXXq6xXFXXX7/Fuga-de-Rick-e-Morty-Hot-Anima-o-Dos-Desenhos-Animados-Poster-Retro-Do-Vintage-Da.jpg') no-repeat center center fixed;  
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+}
+
+/*---------------------------- Titulos ----------------------------*/
 h1 {
     font-size: 100px;
-    font-weight: 400;
-    text-transform: capitalize;
-    color: var(--emerald-950);
-    text-align: center;
 }
 
 h2 {
     font-size: 36px;
-    text-transform: capitalize;
 }
 
 h3 {
     font-size: 32px;
-    text-transform: capitalize;
 }
 
 h4 {
     font-size: 28px;
-    text-transform: capitalize;
 }
 
 h5 {
     font-size: 24px;
-    text-transform: capitalize;
 }
 
 h6{
     font-size: 20px;
-    text-transform: capitalize;
 }
+
+p {
+    font-size: 16px;
+}
+/*---------------------------- Botones ----------------------------*/
+button {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--negro);
+}
+
+.boton-verde {
+    background-color: var(--verde_claro);
+    border: 3px solid var(--negro);
+    border-radius: 15px;
+    box-shadow: var(--negro) 4px 4px 0 0;
+    color: var(--negro);
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.boton-morado {
+    background-color: var(--morado_claro);
+    border: 3px solid var(--negro);
+    border-radius: 15px;
+    box-shadow: var(--negro) 4px 4px 0 0;
+    color: var(--negro);
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.boton-rojo {
+    background-color: var(--rojo_claro);
+    border: 3px solid var(--negro);
+    border-radius: 15px;
+    box-shadow: var(--negro) 4px 4px 0 0;
+    color: var(--negro);
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.boton-amarillo {
+    background-color: var(--amarillo_claro);
+    border: 3px solid var(--negro);
+    border-radius: 15px;
+    box-shadow: var(--negro) 4px 4px 0 0;
+    color: var(--negro);
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.boton-verde:hover {
+    background-color: #fff;
+}
+.boton-morado:hover {
+    background-color: #fff;
+}
+.boton-rojo:hover {
+    background-color: #fff;
+}
+.boton-amarillo:hover {
+    background-color: #fff;
+}
+
+.boton-verde:active {
+    box-shadow: var(--negro) 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
+.boton-morado:active {
+    box-shadow: var(--negro) 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
+.boton-rojo:active {
+    box-shadow: var(--negro) 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
+.boton-amarillo:active {
+    box-shadow: var(--negro) 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
+
+/*---------------------------- Objetos ----------------------------*/
