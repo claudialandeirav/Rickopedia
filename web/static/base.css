@@ -139,7 +139,7 @@ p {
     font-size: 16px;
 }
 /*---------------------------- Botones ----------------------------*/
-button {
+a {
     font-family: 'Patrick Hand', cursive;
     font-size: 20px;
     font-weight: 600;
