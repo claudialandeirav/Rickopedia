@@ -4,7 +4,6 @@
 body {
     font-family: 'Patrick Hand', cursive;
     font-size: 14px;
-    text-transform: capitalize;
     text-align: center;
     color: var(--negro);
 }
@@ -16,7 +15,7 @@ body::after {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    opacity: 0.6;
+    opacity: 0.5;
     top: 0;
     left: 0;
     bottom: 0;
@@ -25,21 +24,107 @@ body::after {
     z-index: -1;
 }
 
+/*---------------------------- Columnas ----------------------------*/
+.una-columna {
+    display: grid;
+    grid-template-columns: 1fr;
+
+}
+.dos-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.tres-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cuatro-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/*---------------------------- Filas ----------------------------*/
+.una-fila {
+    display: grid;
+    grid-template-rows: auto;
+}
+.dos-filas {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.tres-filas {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.cuatro-filas {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.cinco-filas {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.seis-filas {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+/*---------------------------- Localizaciones ----------------------------*/
+.izquierda {
+    padding: 5%;
+    text-align: left;
+}
+
+.derecha {
+    padding: 5%;
+    text-align: right;
+}
+
+.centro {
+    padding: 5%;
+    text-align: center;
+}
+
+/*---------------------------- Scrollbar ----------------------------*/
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--gris);
+    border-radius: 6px;
+}
+
+.scrollbar {
+    scrollbar-color: var(--gris) var(--blanco); 
+}
+
+.scrollbar {
+    scrollbar-face-color: var(--gris);
+    scrollbar-shadow-color: var(--blanco);
+}
+
 /*---------------------------- Titulos ----------------------------*/
 h1 {
     font-size: 100px;
 }
 
 h2 {
-    font-size: 36px;
+    font-size: 50px;
 }
 
 h3 {
-    font-size: 32px;
+    font-size: 38px;
 }
 
 h4 {
-    font-size: 28px;
+    font-size: 32px;
 }
 
 h5 {
@@ -60,6 +145,7 @@ button {
     font-weight: 600;
     text-align: center;
     color: var(--negro);
+    padding-bottom: 4%;
 }
 
 .boton-verde {
@@ -121,6 +207,7 @@ button {
     padding: 0 18px;
     line-height: 50px;
     text-align: center;
+    align-items: center;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
@@ -159,6 +246,7 @@ button {
 
 /*---------------------------- Objetos ----------------------------*/
 .box-blanca-rayada {
+    margin: 5%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, 
                 rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
                 rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -167,9 +255,11 @@ button {
     border: 3px solid var(--negro);
     border-radius: 15px;
     align-items: center;
+    text-align: center;
 }
 
 .box-verde-borde {
+    margin: 5%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, 
                 rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
                 rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -177,10 +267,12 @@ button {
     border: 3px solid var(--verde);
     border-radius: 15px;
     align-items: center;
+    text-align: center;
     color: var(--verde);
 }
 
 .box-gris-borde {
+    margin: 5%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, 
                 rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
                 rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -188,10 +280,12 @@ button {
     border: 3px solid var(--gris);
     border-radius: 15px;
     align-items: center;
+    text-align: center;
     color: var(--gris);
 }
 
 .box-rojo-borde {
+    margin: 5%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, 
                 rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
                 rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -199,10 +293,12 @@ button {
     border: 3px solid var(--rojo);
     border-radius: 15px;
     align-items: center;
+    text-align: center;
     color: var(--rojo);
 }
 
 .box-amarillo-borde {
+    margin: 5%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, 
                 rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
                 rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -210,10 +306,12 @@ button {
     border: 3px solid var(--amarillo);
     border-radius: 15px;
     align-items: center;
+    text-align: center;
     color: var(--amarillo);
 }
 
 .box-morado {
+    margin: 5%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, 
                 rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
                 rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -221,9 +319,23 @@ button {
     border: 3px solid var(--negro);
     border-radius: 15px;
     align-items: center;
+    text-align: center;
+}
+
+.box-rojo {
+    margin: 5%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, 
+                rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+                rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    background: var(--rojo-pastel);
+    border: 3px solid var(--negro);
+    border-radius: 15px;
+    align-items: center;
+    text-align: center;
 }
 
 .box-amarillo {
+    margin: 5%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, 
                 rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
                 rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -231,9 +343,11 @@ button {
     border: 3px solid var(--negro);
     border-radius: 15px;
     align-items: center;
+    text-align: center;
 }
 
 .box-blanco {
+    margin: 5%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, 
                 rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
                 rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -241,4 +355,12 @@ button {
     border: 3px solid var(--negro);
     border-radius: 15px;
     align-items: center;
+    text-align: center;
+}
+
+/*---------------------------- Imagen ----------------------------*/
+img {
+    width: 100%;
+    max-width: 90%; 
+    height: auto;
 }
