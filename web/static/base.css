@@ -245,6 +245,12 @@ a {
 }
 
 /*---------------------------- Objetos ----------------------------*/
+.box-transparente {
+    margin: 5%;
+    align-items: center;
+    text-align: center;
+}
+
 .box-blanca-rayada {
     margin: 5%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, 
@@ -359,8 +365,15 @@ a {
 }
 
 /*---------------------------- Imagen ----------------------------*/
-img {
+.img-png {
     width: 100%;
     max-width: 90%; 
     height: auto;
+    padding: 7%;
+}
+
+.img-fondo {
+    border-radius: 15px;
+    overflow: hidden;
+    transform: scale(0.9);
 }
