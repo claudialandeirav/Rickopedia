@@ -122,7 +122,7 @@ h1 {
 }
 
 h2 {
-    font-size: 50px;
+    font-size: 60px;
 }
 
 h3 {
@@ -144,6 +144,7 @@ h6{
 p {
     font-size: 18px;
 }
+
 /*---------------------------- Botones ----------------------------*/
 a {
     font-family: 'Patrick Hand', cursive;
@@ -416,3 +417,17 @@ a {
     flex-direction: column;
 }
 
+/*---------------------------- Menu desplegable ----------------------------*/
+.menu {
+    position: static;
+    padding: 0;
+}
+
+.contenido-menu {
+    display: none;
+    z-index: 1;
+}
+
+.menu:hover .contenido-menu {
+    display: block;
+}
