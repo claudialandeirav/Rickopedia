@@ -11,92 +11,122 @@
                     <h1>Rickopedia</h1>
                 </div>
                 <div class="seis-filas centro">
-                    <a class="boton-morado">Home</a>
-                    <a class="boton-morado">Characters</a>
-                    <a class="boton-morado">Episodes</a>
-                    <a class="boton-morado">Locations</a>
-                    <a class="boton-morado">Docs</a>
+                    <a class="boton-morado" href="{{ url_for('home') }}">Home</a>
+                    <a class="boton-morado" href="{{ url_for('characters') }}">Characters</a>
+                    <a class="boton-morado" href="{{ url_for('episodes') }}">Episodes</a>
+                    <a class="boton-morado" href="{{ url_for('locations') }}">Locations</a>
+                    <a class="boton-morado" href="{{ url_for('docs') }}">Docs</a>
                 </div>
             </div>
         </div>
 
         <div class="derecha">
-            <img 
-            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/51510728-2a84-4021-bc2c-daac82c91c83/dbv9o2c-04180ca8-8be7-4f98-b659-fb0af90e5777.png/v1/fit/w_828,h_1176/rick_morty_by_rnzzz_dbv9o2c-414w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTQ1NCIsInBhdGgiOiJcL2ZcLzUxNTEwNzI4LTJhODQtNDAyMS1iYzJjLWRhYWM4MmM5MWM4M1wvZGJ2OW8yYy0wNDE4MGNhOC04YmU3LTRmOTgtYjY1OS1mYjBhZjkwZTU3NzcucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.egUytD4hsd3KFeLNd_Sgg_u6ykp40Tl9uAEdcAj_p9U" 
-            alt="Rickopedia">
+            <img class="img-png"
+            src="{{ url_for('static', filename='images/RickMorty_HomePage.png') }}" 
+            alt="">
         </div>
     </div>
 
     <div class="box-morado">
+
+        <h2>Rick and Morty</h2>
+
         <div class="dos-columnas">
             <div class="centro">
-                <h2>Rick and Morty</h2>
+                <img class="img-fondo"
+                src="{{ url_for('static', filename='images/RickMorty_Resumen.gif') }}" 
+                alt="">
             </div>
+                
             <div class="derecha">
                 <div class="box-blanco">
-                    <h6 class="izquierda">Rick, a brilliant scientist, and Morty, his impressionable grandson, live dangerous adventures on other planets and parallel dimensions.</h6>
+                    <p class="izquierda">Rick, a brilliant scientist, and Morty, his impressionable grandson, live dangerous adventures on other planets and parallel dimensions.
+                        <br>
+                        <br>
+                        "Rick and Morty" is an animated adult series that follows the adventures of Rick Sanchez, a genius and alcoholic scientist, and his grandson Morty Smith. 
+                        Together, they explore alternate dimensions, face surreal situations, and tackle scientific challenges. The series blends science fiction with black and satirical humor, addressing profound themes while breaking the fourth wall and providing social commentary. 
+                        The relationship between Rick and his family, along with improvisation in the writing, are key aspects that contribute to the show's appeal.
+                    </p>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
 
     <div class="box-amarillo">
+        <h2>Rickopedia</h2>
         <div class="dos-columnas">
-            <div class="dos-filas">
-                <div class="centro">
-                    <h2>Rickopedia</h2>
-                </div>
-                <div class="centro">
-                    <a class="boton-amarillo">Suggestions</a>
-                </div>
-            </div>
-            
+            <div class="centro">
+                <img class="img-fondo"
+                src="{{ url_for('static', filename='images/RickMorty_Rickopedia.gif') }}" 
+                alt="">
+            </div>   
+
             <div class="box-blanco">
-                <h6 class="izquierda">Rickopedia is a wiki of all the information you can find about Rick and Morty.
-                <br>
-                It is developed using the Rick and Morty API.
-                <br>
-                It has been designed thinking that all this information can be found, searched and seen clearly and easily.</h6>
-            </div>
-        </div>
-    </div>
-
-    <div class="box-rojo">
-        <div class="dos-columnas">
-            <div class="dos-filas">
-                <div class="centro">
-                    <h2>Author</h2>
-                </div>
-                <div class="centro">
-                    <a class="boton-rojo">GitHub Repository</a>
-                </div>
-            </div>
-            <div class="izquierda">
-                <div class="box-blanco">
-                    <h6 class="izquierda">The website has been made by Claudia Landeira for fun.
+                <div class="dos-filas">
+                    <p class="izquierda">Rickopedia is a wiki of all the information you can find about Rick and Morty.
                         <br>
-                        You can make suggestions through the suggestions button or write to me through my social networks.
-                    </h6>
-
-                    <div class="cuatro-columnas">
+                        It is developed using the Rick and Morty API.
+                        <br>
+                        It has been designed thinking that all this information can be found, searched and seen clearly and easily.
+                    </p>
+                    <div class="dos-columnas">
                         <div class="centro">
-                            <a class="boton-morado"><i class="bi bi-twitter-x"></i></a>
+                            <a class="boton-amarillo">Suggestions</a>
                         </div>
                         <div class="centro">
-                            <a class="boton-morado"><i class="bi bi-instagram"></i></a>
-                        </div>
-                        
-                        <div class="centro">
-                            <a class="boton-morado"><i class="bi bi-github"></i></a>
-                        </div>
-                        
-                        <div class="centro">
-                            <a class="boton-morado"><i class="bi bi-linkedin"></i></a>
+                            <a class="boton-amarillo" href="https://rickandmortyapi.com/">Rick and Morty API</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="box-rojo">
+        <h2>Author</h2>
+
+        <div class="dos-columnas">
+            <div class="centro">
+                <img class="img-fondo"
+                src="{{ url_for('static', filename='images/RickMorty_Author.gif') }}" 
+                alt="">
+            </div>
+
+            
+            <div class="box-blanco">
+                <div class="izquierda">
+                    <div class="tres-filas">
+                        <p class="izquierda">The website has been made by Claudia Landeira for fun.
+                            <br>
+                            You can make suggestions through the suggestions button or write to me through my social networks.
+                            <br>
+                            The website is open source and is available in my GitHub Repository.
+                        </p>
+
+                        <a class="boton-transparente" href="https://github.com/claudialandeirav/Rickopedia">GitHub Repository</a>
+
+                        <div class="cuatro-columnas">
+                            <div class="centro">
+                                <a class="boton-transparente"><i class="bi bi-twitter-x"></i></a>
+                            </div>
+                            <div class="centro">
+                                <a class="boton-transparente"><i class="bi bi-instagram"></i></a>
+                            </div>
+
+                            <div class="centro">
+                                <a class="boton-transparente"><i class="bi bi-github"></i></a>
+                            </div>
+
+                            <div class="centro">
+                                <a class="boton-transparente"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'global/footer.html' %}
 </body>
 </html>
