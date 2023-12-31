@@ -45,6 +45,11 @@ body::after {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.cinco-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
 /*---------------------------- Filas ----------------------------*/
 .una-fila {
     display: grid;
@@ -77,23 +82,24 @@ body::after {
 
 /*---------------------------- Localizaciones ----------------------------*/
 .izquierda {
-    padding: 5%;
+    padding: 2%;
     text-align: left;
 }
 
 .derecha {
-    padding: 5%;
+    padding: 2%;
     text-align: right;
 }
 
 .centro {
-    padding: 5%;
+    padding: 2%;
     text-align: center;
 }
 
 /*---------------------------- Scrollbar ----------------------------*/
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -136,7 +142,7 @@ h6{
 }
 
 p {
-    font-size: 16px;
+    font-size: 18px;
 }
 /*---------------------------- Botones ----------------------------*/
 a {
@@ -145,7 +151,7 @@ a {
     font-weight: 600;
     text-align: center;
     color: var(--negro);
-    padding-bottom: 4%;
+    padding-bottom: 10%;
 }
 
 .boton-verde {
@@ -213,6 +219,19 @@ a {
     -webkit-user-select: none;
     touch-action: manipulation;
 }
+.boton-transparente {
+    background-color: var(--blanco);
+    color: var(--negro);
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
 
 .boton-verde:hover {
     background-color: #fff;
@@ -224,6 +243,9 @@ a {
     background-color: #fff;
 }
 .boton-amarillo:hover {
+    background-color: #fff;
+}
+.boton-transparente:hover {
     background-color: #fff;
 }
 
@@ -241,6 +263,9 @@ a {
 }
 .boton-amarillo:active {
     box-shadow: var(--negro) 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
+.boton-transparente:active {
     transform: translate(2px, 2px);
 }
 
@@ -369,7 +394,7 @@ a {
     width: 100%;
     max-width: 90%; 
     height: auto;
-    padding: 7%;
+    padding: 5%;
 }
 
 .img-fondo {
@@ -377,3 +402,17 @@ a {
     overflow: hidden;
     transform: scale(0.9);
 }
+
+/*---------------------------- Footer ----------------------------*/
+.footer {
+    position: relative;
+    width: 100%;
+    background: var(--blanco);
+    min-height: 100px;
+    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
