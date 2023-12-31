@@ -13,5 +13,25 @@ def start_app():
     @app.route('/', methods=['GET'])
     def home():
         return render_template('home.html')
+    
 
+    # ---------------------------------- MODULO PERSONAJES
+    @app.route('/characters', methods=['GET'])
+    def characters():
+        return render_template('characters.html')
+    
+    # ---------------------------------- MODULO EPISODIOS
+    @app.route('/episodes', methods=['GET'])
+    def episodes():
+        return render_template('episodes.html')
+    
+    # ---------------------------------- MODULO LOCALIZACIONES
+    @app.route('/locations', methods=['GET'])
+    def locations():
+        return render_template('locations.html')
+
+    # ---------------------------------- MODULO DOCS
+    @app.route('/docs', methods=['GET'])
+    def docs():
+        return render_template('docs.html')
     return app
