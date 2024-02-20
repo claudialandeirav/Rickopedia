@@ -4,40 +4,23 @@
 {% include 'global/header.html' %}
 
 <body>
-    <div class="dos-columnas">
-        <div class="izquierda">
-            <div class="dos-filas">
-                <div class="box-blanca-rayada">
-                    <h1>Rickopedia</h1>
-                </div>
-                <div class="seis-filas centro">
-                    <a class="boton-morado" href="{{ url_for('home') }}">Home</a>
-                    <a class="boton-morado" href="{{ url_for('characters') }}">Characters</a>
-                    <a class="boton-morado" href="{{ url_for('episodes') }}">Episodes</a>
-                    <a class="boton-morado" href="{{ url_for('locations') }}">Locations</a>
-                    <a class="boton-morado" href="{{ url_for('docs') }}">Docs</a>
-                </div>
-            </div>
-        </div>
+    {% include 'global/menu.html' %}
 
-        <div class="derecha">
-            <img class="img-png"
-            src="{{ url_for('static', filename='images/RickMorty_HomePage.png') }}" 
-            alt="">
+    <div class="centro">
+        <div class="box-blanca-rayada">
+            <h2>Rickopedia</h2>
+            {% include 'global/wrapper.html' %}
         </div>
     </div>
 
     <div class="box-morado">
-
         <h2>Rick and Morty</h2>
-
         <div class="dos-columnas">
             <div class="centro">
                 <img class="img-fondo"
                 src="{{ url_for('static', filename='images/RickMorty_Resumen.gif') }}" 
-                alt="">
+                alt="RickMorty_Resumen">
             </div>
-                
             <div class="derecha">
                 <div class="box-blanco">
                     <p class="izquierda">Rick, a brilliant scientist, and Morty, his impressionable grandson, live dangerous adventures on other planets and parallel dimensions.
@@ -58,9 +41,8 @@
             <div class="centro">
                 <img class="img-fondo"
                 src="{{ url_for('static', filename='images/RickMorty_Rickopedia.gif') }}" 
-                alt="">
+                alt="RickMorty_Rickopedia">
             </div>   
-
             <div class="box-blanco">
                 <div class="dos-filas">
                     <p class="izquierda">Rickopedia is a wiki of all the information you can find about Rick and Morty.
@@ -84,15 +66,12 @@
 
     <div class="box-rojo">
         <h2>Author</h2>
-
         <div class="dos-columnas">
             <div class="centro">
                 <img class="img-fondo"
                 src="{{ url_for('static', filename='images/RickMorty_Author.gif') }}" 
-                alt="">
+                alt="RickMorty_Author">
             </div>
-
-            
             <div class="box-blanco">
                 <div class="izquierda">
                     <div class="tres-filas">
