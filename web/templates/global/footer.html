@@ -1,36 +1,16 @@
-<footer class="footer">
-    <div class="cuatro-columnas">
-        <div class="centro">
-            <a class="boton-transparente"><i class="bi bi-twitter-x"></i></a>
-        </div>
-        <div class="centro">
-            <a class="boton-transparente"><i class="bi bi-instagram"></i></a>
-        </div>
-        <div class="centro">
-            <a class="boton-transparente"><i class="bi bi-github"></i></a>
-        </div>
-        <div class="centro">
-            <a class="boton-transparente"><i class="bi bi-linkedin"></i></a>
-        </div>
-    </div>
-
-    <div class="cinco-columnas">
-        <div class="centro">
-            <a class="boton-transparente" href="{{ url_for('home') }}">Home</a>
-        </div>
-        <div class="centro">
-            <a class="boton-transparente" href="{{ url_for('characters') }}">Characters</a>
-        </div>
-        <div class="centro">
-            <a class="boton-transparente" href="{{ url_for('episodes') }}">Episodes</a>
-        </div>
-        <div class="centro">
-            <a class="boton-transparente" href="{{ url_for('locations') }}">Locations</a>
-        </div>
-        <div class="centro">
-            <a class="boton-transparente" href="{{ url_for('docs') }}">Docs</a>
-        </div>
-    </div>
-
-    <p class="text-center">© 2023 Claudia Landeira | All Rights Reserved</p>
+<footer class="py-3 my-4">
+    <ul class="nav justify-content-center pb-3 mb-3">
+        <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link px-2 text-body-secondary">Home</a></li>
+        <li class="nav-item"><a href="{{ url_for('characters') }}" class="nav-link px-2 text-body-secondary">Characters</a></li>
+        <li class="nav-item"><a href="{{ url_for('episodes') }}" class="nav-link px-2 text-body-secondary">Episodes</a></li>
+        <li class="nav-item"><a href="{{ url_for('locations') }}" class="nav-link px-2 text-body-secondary">Locations</a></li>
+        <li class="nav-item"><a href="{{ url_for('docs') }}" class="nav-link px-2 text-body-secondary">Docs</a></li>
+    </ul>
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="https://twitter.com/clau_lanvi" class="nav-link px-2 text-body-secondary"><i class="bi bi-twitter-x"></i></a></li>
+        <li class="nav-item"><a href="https://www.instagram.com/clau.lanvi/" class="nav-link px-2 text-body-secondary"><i class="bi bi-instagram"></i></a></li>
+        <li class="nav-item"><a href="https://github.com/claudialandeirav" class="nav-link px-2 text-body-secondary"><i class="bi bi-github"></i></a></li>
+        <li class="nav-item"><a href="https://www.linkedin.com/in/claudia-landeira-vi%C3%B1uela/" class="nav-link px-2 text-body-secondary"><i class="bi bi-linkedin"></i></a></li>
+    </ul>
+    <p class="text-center text-body-secondary">© 2024 Claudia Landeira | All Rights Reserved</p>
 </footer>
