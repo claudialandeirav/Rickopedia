@@ -34,4 +34,10 @@ def start_app():
     @app.route('/docs', methods=['GET'])
     def docs():
         return render_template('docs.html')
+    
+    # ---------------------------------- MODULO ABOUT
+    @app.route('/about', methods=['GET'])
+    def about():
+        return render_template('about.html')
+    
     return app
