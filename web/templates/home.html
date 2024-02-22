@@ -1,80 +1,209 @@
 <!DOCTYPE html>
-<html lang="es">
+<html data-theme="light" lang="es">
 
 {% include 'global/header.html' %}
 
 <body>
     {% include 'global/menu.html' %}
 
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
-        <div class="col-md-6 p-lg-5 mx-auto">
-            <h1 class="display-3 fw-bold">Rickopedia</h1>
-            <h3 class="fw-normal text-muted mb-3">Welcome to Rick and Morty world</h3>
-            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="3000">
-                        <img src="{{ url_for('static', filename='images/RickMorty_Resumen.gif') }}" class="d-block w-100" alt="Resumen">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <img src="{{ url_for('static', filename='images/RickMorty_Rickopedia.gif') }}" class="d-block w-100" alt="Rickopedia">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <img src="{{ url_for('static', filename='images/RickMorty_Author.gif') }}" class="d-block w-100" alt="Author">
+    <div class="h-10"></div> 
+
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+        <div class="font-title text-9xl font-black leading-none">Rickopedia</div> 
+        <div class="h-4"></div> 
+        <p class="text-5xl mx-auto font-sans font-light">Welcome to Rick and Morty world</p> 
+    </div>
+
+    <div class="h-10"></div> 
+
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 ">
+        <div class="grid grid-cols-3 gap-5 justify-items-center">
+
+            <div class="card w-5/6 col bg-base-100 shadow-xl">
+                <figure><img src="{{ url_for('static', filename='images/RickMorty_Resumen.gif') }}" alt="Characters" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Characters</h2>
+                    <p>Find any character from Rick and Morty TV show</p>
+                    <div class="card-actions justify-end">
+                        <a href="{{ url_for('characters') }}" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+            </div>
+        
+            <div class="card w-5/6 col bg-base-100 shadow-xl">
+                <figure><img src="{{ url_for('static', filename='images/RickMorty_Author.gif') }}" alt="Episodes" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Episodes</h2>
+                    <p>Find any episode from Rick and Morty TV show</p>
+                    <div class="card-actions justify-end">
+                        <a href="{{ url_for('episodes') }}" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card w-5/6 col bg-base-100 shadow-xl">
+                <figure><img src="{{ url_for('static', filename='images/RickMorty_Rickopedia.gif') }}" alt="Locations" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Locations</h2>
+                    <p>Find any location from Rick and Morty TV show</p>
+                    <div class="card-actions justify-end">
+                        <a href="{{ url_for('locations') }}" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="d-md-flex flex-md-equal p-3 p-md-5 m-md-3 bg-body-tertiary justify-content-center">
-        <div class="me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden ">
-            <div class="my-3 p-3">
-                <h2 class="display-5">Characters</h2>
-                <p class="lead">You can find any character from Rick and Morty TV show</p>
-                <div class="d-flex gap-3 justify-content-center lead fw-normal">
-                    <a class="icon-link" href="{{ url_for('characters') }}">Characters <i class="bi bi-caret-right-fill"></i></a>
-                </div>
-            </div>
+    <div class="h-2"></div> 
+    
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 ">
+        <div class="animate-pulse grid grid-cols-1 gap-5 justify-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-48 w-48" fill="none" viewBox="0 0 48 48" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.47 13.28a.75.75 0 0 0 1.06 0l7.5-7.5a.75.75 0 0 0-1.06-1.06L12 11.69 5.03 4.72a.75.75 0 0 0-1.06 1.06l7.5 7.5Z" />
+            </svg>
         </div>
-        <div class="me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="my-3 p-3">
-                <h2 class="display-5">Episodes</h2>
-                <p class="lead">You can find any episode from Rick and Morty TV show</p>
-                <div class="d-flex gap-3 justify-content-center lead fw-normal">
-                    <a class="icon-link" href="{{ url_for('episodes') }}">Episodes <i class="bi bi-caret-right-fill"></i></a>
-                </div>
-            </div>
+    </div>
 
-        </div>
-        <div class="me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="my-3 p-3">
-                <h2 class="display-5">Locations</h2>
-                <p class="lead">You can find any location from Rick and Morty TV show</p>
-                <div class="d-flex gap-3 justify-content-center lead fw-normal">
-                    <a class="icon-link" href="{{ url_for('locations') }}">Locations <i class="bi bi-caret-right-fill"></i></a>
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+        <div class="font-title text-9xl font-black leading-none">What is Rick and Morty?</div>
+        <div class="h-10"></div> 
+        <p class="text-3xl text-justify mx-auto w-3/4 font-sans font-light">Rick and Morty is an American animated science fiction sitcom created by Justin Roiland and Dan Harmon. The series premiered on Adult Swim, 
+            a late-night programming block on Cartoon Network, in December 2013. The show follows the misadventures of an eccentric and alcoholic scientist named Rick Sanchez and his good-hearted but 
+            easily influenced grandson, Morty Smith. Together, they embark on various interdimensional and intergalactic adventures, encountering bizarre creatures, visiting alternate realities, 
+            and exploring complex themes such as existentialism, family dynamics, and the nature of reality. Rick and Morty is known for its dark humor, intricate storytelling, and inventive science fiction concepts, 
+            and has gained a dedicated fanbase over the years.</p> 
+    </div>
+
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 ">
+        <div class="grid grid-cols-2 gap-5 justify-items-center">
+            <div class="card w-5/6 col bg-base-100 shadow-xl">
+                <figure><img src="{{ url_for('static', filename='images/Rick.gif') }}" alt="Rick" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">This is Rick</h2>
+                    <p class="text-justify">Rick is a brilliant yet deeply flawed and cynical scientist in "Rick and Morty." He's known for his reckless behavior, heavy drinking, and disdain for authority. 
+                        Despite his flaws, he's incredibly intelligent and inventive, often creating mind-bending inventions. 
+                        Rick's complex personality includes a mix of nihilism, independence, and occasional moments of genuine care, especially toward his grandson Morty.</p>
                 </div>
             </div>
-        </div>
-        <div class="me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="my-3 p-3">
-                <h2 class="display-5">Docs</h2>
-                <p class="lead">Rickopedia documentation</p>
-                <div class="d-flex gap-3 justify-content-center lead fw-normal">
-                    <a class="icon-link" href="{{ url_for('docs') }}">Docs <i class="bi bi-caret-right-fill"></i></a>
+        
+            <div class="card w-5/6 col bg-base-100 shadow-xl">
+                <figure><img src="{{ url_for('static', filename='images/Morty.gif') }}" alt="Morty" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">This is Morty</h2>
+                    <p class="text-justify">Morty is a good-hearted teenager reluctantly dragged into interdimensional adventures with his eccentric grandfather, Rick. 
+                        He's characterized by his nervousness, insecurity, and moral compass, but grows more confident and capable over time.</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="h-2"></div> 
+    
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+        <div class="font-title text-9xl font-black leading-none">Where can you watch it?</div>
+        <div class="h-10"></div> 
+        <p class="text-3xl mx-auto w-3/4 font-sans font-light">Here are some of the platforms where you can watch Rick and Morty:</p> 
+    </div>
+
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 ">
+        <div class="grid grid-cols-7 gap-5 justify-items-center">
+
+            <div class="card w-64 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://variety.com/wp-content/uploads/2014/02/adult-swim1.jpg?crop=178px%2C100px%2C666px%2C371px&resize=1000%2C563" alt="AdultSwim" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Adult Swim</h2>
+                    <div class="card-actions justify-end">
+                        <a href="https://www.adultswim.com/videos/rick-and-morty" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>    
+        
+            <div class="card w-64 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://geekypin.com/assets/img/tarjetas/uploads/0ee3685845eb0dee6139b5fc0ba0cd9c.png" alt="Hulu" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Hulu</h2>
+                    <div class="card-actions justify-end">
+                        <a href="https://www.hulu.com/series/rick-and-morty-d76d6361-3fbf-4842-8dd7-e05520557280 class=" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="card w-64 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://www.lavanguardia.com/andro4all/hero/2023/06/hbo-max.png?width=1200" alt="HBOmax" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">HOB Max</h2>
+                    <div class="card-actions justify-end">
+                        <a href="https://www.hbomax.com/es/es/series/urn:hbo:series:GXkRjxwjR68PDwwEAABKJ" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="card w-64 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2022/12/30/prime-video-logo.jpeg" alt="AmazonPrime" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Amazon Prime Video</h2>
+                    <div class="card-actions justify-end">
+                        <a href="https://www.primevideo.com/-/es/detail/Rick-y-Morty/0QG2DSIPHWFT11LTO37WHI8W9V" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="card w-64 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://cdn.arstechnica.net/wp-content/uploads/2021/04/play-movies-tv-640x360.jpg" alt="GooglePlay" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Google Play Movies</h2>
+                    <div class="card-actions justify-end">
+                        <a href="https://play.google.com/store/tv/show/Rick_and_Morty?id=_altTjMtjCI&hl=es_419&gl=DE" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="card w-64 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://lovingseries.files.wordpress.com/2019/09/apple-tv-plus.png" alt="AppleTV" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Apple TV</h2>
+                    <div class="card-actions justify-end">
+                        <a href="https://tv.apple.com/es/show/rick-y-morty/umc.cmc.12dp30hnvyq5fbm9716puu8zc" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card w-64 bg-base-100 shadow-xl image-full">
+                <figure><img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/VUDU_logo_plain_2014.png" alt="Vudu" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Vudu</h2>
+                    <div class="card-actions justify-end">
+                        <a href="https://www.vudu.com/content/browse/details/Rick-and-Morty-Season-1/585715" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>  
+
+              
+        </div>
+    </div>
+
+    <div class="h-12"></div>
 
     {% include 'global/footer.html' %}
-    {% include 'global/scriptsJS.html' %}
 </body>
 </html>
