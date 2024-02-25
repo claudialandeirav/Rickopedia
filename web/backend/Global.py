@@ -2,45 +2,45 @@ from flask import Flask, jsonify
 import requests
 
 '''
-Class Global
-Author: Claudia Landeira
+Clase Global
+Autora: Claudia Landeira
 
-It has the responsability of process common operations
+Información que afecta a todas las demás clases
 '''
 class Global:
 
     '''
-    Function get_all
-    Author: Claudia Landeira
+    Funcion getUrlCharacter
+    Autora: Claudia Landeira
 
-    It has the responsability of get the url of character request
+    Devuelve la url de los personajes
     '''
     def getUrlCharacter():
         return 'https://rickandmortyapi.com/api/character/'
     
     '''
-    Function get_all
-    Author: Claudia Landeira
+    Funcion getUrlLocation
+    Autora: Claudia Landeira
 
-    It has the responsability of get the url of location request
+    Devuelve la url de los localizaciones
     '''
     def getUrlLocation():
         return 'https://rickandmortyapi.com/api/location/'
     
     '''
-    Function get_all
-    Author: Claudia Landeira
+    Funcion getUrlEpisode
+    Autora: Claudia Landeira
 
-    It has the responsability of get the url of episode request
+    Devuelve la url de los episodios
     '''
     def getUrlEpisode():
         return 'https://rickandmortyapi.com/api/episode/'
     
     '''
-    Function get_all
-    Author: Claudia Landeira
+    Funcion data
+    Autora: Claudia Landeira
 
-    It has the responsability of do the request by url and return the data on json format
+    Hace la request a la url y devuelve los datos en formato json
     '''
     def data(url):
         response = requests.get(url)
