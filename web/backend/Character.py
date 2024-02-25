@@ -1,36 +1,37 @@
 from web.backend.Global import Global
 
 '''
-Class Character
-Author: Claudia Landeira
+Clase Character
+Autora: Claudia Landeira
 
-It has the responsability of get the information about the character
+Información de los personajes
 '''
 class Character:
 
     '''
-    Function get_all
-    Author: Claudia Landeira
+    Funcion get_all
+    Autora: Claudia Landeira
 
-    It has the responsability of get all character of Rick and Morty
+    Devuelve todos los personajes disponibles y sus datos
     '''
     def get_all():
         return Global.data(Global.getUrlCharacter())
     
     '''
-    Function get
-    Author: Claudia Landeira
+    Funcion get
+    Autora: Claudia Landeira
 
-    It has the responsability of get a character by id
+    Devuelve los datos de un personaje por su id
     '''
-    def get(idCharacter):
+    def getById(idCharacter):
         return Global.data(f"{Global.getUrlCharacter()}{idCharacter}")
     
     '''
-    Function filter
-    Author: Claudia Landeira
+    Funcion filter
+    Autora: Claudia Landeira
 
-    It has the responsability of get the information filtering by name, status, species, type or gender
+    Devuelve toda la información dando la posiiblidad de filtrar por nombre, estatus, especie, tipo o genero
+    Todos los parámetros son optativos
     '''
     def filter(name=None, status=None, species=None, type=None, gender=None):        
         param = {}
@@ -54,10 +55,10 @@ class Character:
         return Global.data(url)
     
     '''
-    Function info
-    Author: Claudia Landeira
+    Funcion info
+    Autora: Claudia Landeira
 
-    It has the responsability of get info param on json data
+    Devuelve la información del numero de paginas y de personajes disponibles
     '''
     def info(data):
         info = data['info']
@@ -67,10 +68,10 @@ class Character:
         return [count, pages]
     
     '''
-    Function origin
-    Author: Claudia Landeira
+    Funcion origin
+    Autora: Claudia Landeira
 
-    It has the responsability of get origin param of info param on json data
+    Devuelve la información del planeta origen del personaje
     '''
     def origin(data):
         origin = data['origin']
@@ -80,10 +81,10 @@ class Character:
         return [name, url]
     
     '''
-    Function location
-    Author: Claudia Landeira
+    Funcion location
+    Autora: Claudia Landeira
 
-    It has the responsability of get location param of info param on json data
+    Devuelve la información de la ultima localizacion conocida del personaje
     '''
     def location(data):
         location = data['location']
@@ -93,109 +94,109 @@ class Character:
         return [name, url]
         
     '''
-    Function results
-    Author: Claudia Landeira
+    Funcion results
+    Autora: Claudia Landeira
 
-    It has the responsability of get results param of info param on json data
+    Devuelve la información completa del personaje
     '''
     def results(data):
         return data['results']
     
     '''
-    Function count
-    Author: Claudia Landeira
+    Funcion count
+    Autora: Claudia Landeira
 
-    It has the responsability of get count param of info param on json data
+    Devuelve la información del número de personajes
     '''
     def count(data):
         return data['count']
     
     '''
-    Function pages
-    Author: Claudia Landeira
+    Funcion pages
+    Autora: Claudia Landeira
 
-    It has the responsability of get pages param of info param on json data
+    Devuelve la información del número de páginas
     '''
     def pages(data):
         return data['pages']
     
     '''
-    Function id
-    Author: Claudia Landeira
+    Funcion id
+    Autora: Claudia Landeira
 
-    It has the responsability of get id param of info param on json data
+    Devuelve el id del personaje    
     '''
     def id(data):
         return data['id']
     
     '''
-    Function name
-    Author: Claudia Landeira
+    Funcion name
+    Autora: Claudia Landeira
 
-    It has the responsability of get name param of info param on json data
+    Devuelve el nombre del personaje
     '''
     def name(data):
         return data['name']
     
     '''
-    Function url
-    Author: Claudia Landeira
+    Funcion url
+    Autora: Claudia Landeira
 
-    It has the responsability of get url param of info param on json data
+    Devuelve la url del personaje
     '''
     def url(data):
         return data['url']
     
     '''
-    Function status
-    Author: Claudia Landeira
+    Funcion status
+    Autora: Claudia Landeira
 
-    It has the responsability of get status param of info param on json data
+    Devuelve el estado del personaje
     '''
     def status(data):
         return data['status']
     
     '''
-    Function species
-    Author: Claudia Landeira
+    Funcion species
+    Autora: Claudia Landeira
 
-    It has the responsability of get species param of info param on json data
+    Devuelve la especie del personaje
     '''
     def species(data):
         return data['species']
     
     '''
-    Function type
-    Author: Claudia Landeira
+    Funcion type
+    Autora: Claudia Landeira
 
-    It has the responsability of get type param of info param on json data
+    Devuelve el tipo del personaje
     '''
     def type(data):
         return data['type']
     
     '''
-    Function gender
-    Author: Claudia Landeira
+    Funcion gender
+    Autora: Claudia Landeira
 
-    It has the responsability of get gender param of info param on json data
+    Devuelve el genero del personaje
     '''
     def gender(data):
         return data['gender']
     
     '''
-    Function image
-    Author: Claudia Landeira
+    Funcion image
+    Autora: Claudia Landeira
 
-    It has the responsability of get image param of info param on json data
+    Devuelve la imagen del personaje
     '''    
     def image(data):
         return data['image']
     
     '''
-    Function episode
-    Author: Claudia Landeira
+    Funcion episode
+    Autora: Claudia Landeira
 
-    It has the responsability of get episode param of info param on json data
+    Devuelve el listado de los episodios en los que aparece el personaje
     '''
     def episode(data):
         return data['episode']

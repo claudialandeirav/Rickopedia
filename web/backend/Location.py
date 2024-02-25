@@ -1,36 +1,37 @@
 from web.backend.Global import Global
 
 '''
-Class Location
-Author: Claudia Landeira
+Clase Location
+Autora: Claudia Landeira
 
-It has the responsability of get the information about the location
+Informacion de las localizaciones
 '''
 class Location:
     
     '''
-    Function get_all
-    Author: Claudia Landeira
+    Funcion get_all
+    Autora: Claudia Landeira
 
-    It has the responsability of get all character of Rick and Morty
+    Devuelve toda la informacion de las localizaciones disponibles
     '''
     def get_all():
         return Global.data(Global.getUrlLocation())
     
     '''
-    Function get
-    Author: Claudia Landeira
+    Funcion get
+    Autora: Claudia Landeira
 
-    It has the responsability of get a character by id
+    Devuelve toda la información por id
     '''
-    def get(idLocation):
+    def getById(idLocation):
         return Global.data(f'{Global.getUrlLocation()}{idLocation}')
     
     '''
-    Function filter
-    Author: Claudia Landeira
+    Funcion filter
+    Autora: Claudia Landeira
 
-    It has the responsability of get the information filtering by name, status, species, type or gender
+    Devuelve toda la información dando la posiiblidad de filtrar por nombre y/o tipo
+    Todos los parametros son optativos
     '''
     def filter(name=None, type=None):
         param = {}
@@ -48,10 +49,10 @@ class Location:
         return Global.data(url)
     
     '''
-    Function info
-    Author: Claudia Landeira
+    Funcion info
+    Autora: Claudia Landeira
 
-    It has the responsability of get info param on json data
+    Devuelve la información referente al numero de localizaciones y su paginacion
     '''
     def info(data):
         info = data['info']
@@ -61,73 +62,73 @@ class Location:
         return [count, pages]
     
     '''
-    Function count
-    Author: Claudia Landeira
+    Funcion count
+    Autora: Claudia Landeira
 
-    It has the responsability of get count param of info param on json data
+    Devuelve el numero de localizaciones
     '''
     def count(data):
         return data['count']
     
     '''
-    Function id
-    Author: Claudia Landeira
+    Funcion pages
+    Autora: Claudia Landeira
 
-    It has the responsability of get id param on json data
+    Devuelve el numero de paginas
     '''
-    def id(data):
+    def pages(data):
         return data['pages']
     
     '''
-    Function results
-    Author: Claudia Landeira
+    Funcion results
+    Autora: Claudia Landeira
 
-    It has the responsability of get results param of info param on json data
+    Devuelve el valor de los resultados de la localizacion
     '''
     def results(data):
         return data['results']
     
     '''
-    Function id
-    Author: Claudia Landeira
+    Funcion id
+    Autora: Claudia Landeira
 
-    It has the responsability of get id param of info param on json data
+    Devuelve el id de la localizacion
     '''
     def id(data):
         return data['id']
     
     '''
-    Function name
-    Author: Claudia Landeira
+    Funcion name
+    Autora: Claudia Landeira
 
-    It has the responsability of get name param of info param on json data
+    Devuelve el nombre de la localizacion
     '''
     def name(data):
         return data['name']
     
     '''
-    Function type
-    Author: Claudia Landeira
+    Funcion type
+    Autora: Claudia Landeira
 
-    It has the responsability of get type param of info param on json data
+    Devuelve el tipo de localizacion
     '''
     def type(data):
         return data['type']
     
     '''
-    Function dimension
-    Author: Claudia Landeira
+    Funcion dimension
+    Autora: Claudia Landeira
 
-    It has the responsability of get dimension param of info param on json data
+    Devuelve la dimension de la localizacion
     '''
     def dimension(data):
         return data['dimension']
     
     '''
-    Function residents
-    Author: Claudia Landeira
+    Funcion residents
+    Autora: Claudia Landeira
 
-    It has the responsability of get residents param of info param on json data
+    Devuelve el listado de personajes de esa localizacion
     '''
     def residents(data):
         return data['residents']
