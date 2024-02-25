@@ -7,16 +7,16 @@ Autora: Claudia Landeira
 Información de los personajes
 '''
 class Character:
-
+    
     '''
-    Funcion get_all
+    Funcion getAllPaged
     Autora: Claudia Landeira
 
-    Devuelve todos los personajes disponibles y sus datos
+    Devuelve todos los personajes disponibles y sus datos paginados
     '''
-    def get_all():
-        return Global.data(Global.getUrlCharacter())
-    
+    def getAllPaged(page):
+        return Global.data(f"{Global.getUrlCharacter()}?page={page}")
+
     '''
     Funcion get
     Autora: Claudia Landeira
@@ -64,8 +64,9 @@ class Character:
         info = data['info']
         count = Character.count(info)
         pages = Character.pages(info)
-
-        return [count, pages]
+        next = Character.next(info)
+        prev = Character.prev(info)
+        return {'count': count, 'pages': pages, 'next': next, 'prev': prev}
     
     '''
     Funcion origin
@@ -78,7 +79,7 @@ class Character:
         name = Character.name(origin)
         url = Character.url(origin)
 
-        return [name, url]
+        return {'name': name, 'url': url}
     
     '''
     Funcion location
@@ -87,11 +88,11 @@ class Character:
     Devuelve la información de la ultima localizacion conocida del personaje
     '''
     def location(data):
-        location = data['location']
+        location = data["location"]
         name = Character.name(location)
         url = Character.url(location)
 
-        return [name, url]
+        return {'name': name, 'url': url}
         
     '''
     Funcion results
@@ -119,6 +120,24 @@ class Character:
     '''
     def pages(data):
         return data['pages']
+    
+    '''
+    Funcion next
+    Autora: Claudia Landeira
+
+    Devuelve la url de la pagina siguiente
+    '''
+    def next(data):
+        return data['next']
+    
+    '''
+    Funcion prev
+    Autora: Claudia Landeira
+    
+    Devuelve la url de la pagina anterior
+    '''
+    def prev(data):
+        return data['prev']
     
     '''
     Funcion id

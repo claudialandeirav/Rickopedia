@@ -11,10 +11,86 @@
     <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
         <div class="font-title text-8xl font-black leading-none">Characters</div> 
         <div class="h-1/6"></div> 
-        <p class="text-4xl mx-auto font-sans font-light"></p> 
     </div>
 
     <div class="h-1/6"></div> 
+
+    <div class="overflow-x-auto flex justify-center items-center">
+        <table class="table w-4/5">
+            <thead>
+                <tr class="text-center">
+                    <th>Name</th>
+                    <th>Specie</th>
+                    <th>Gender</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for character in characters %}
+                <tr class="text-center hover:bg-gray-100 cursor-pointer">
+                    <td>
+                        <div class="flex items-center text-center gap-4">
+                            <div class="avatar">
+                                <div class="mask mask-squircle w-12 h-12">
+                                    <img src="{{ character['image'] }}" alt="image" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-center">{{ character['name'] }}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td> {{ character['species'] }} </td>
+                    <td> {{ character['gender'] }} </td>
+                    {% if character['status'] == 'Alive' %}
+                    <td> 
+                        <div class="badge badge-success badge-outline gap-2">
+                            {{ character['status'] }}
+                        </div>
+                    </td>
+                    {% endif %}
+                    {% if character['status'] == 'Dead' %}
+                    <td> 
+                        <div class="badge badge-error badge-outline gap-2">
+                            {{ character['status'] }}
+                        </div>
+                    </td>
+                    {% endif %}
+                    {% if character['status'] == 'unknown' %}
+                    <td> 
+                        <div class="badge badge-outline gap-2">
+                            {{ character['status'] }}
+                        </div>
+                    </td>
+                    {% endif %}
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="join join-center justify-center md:flex pb-8">
+        <ul class="menu menu-horizontal md:menu-horizontal bg-base-200 rounded-box">
+            {% if page > 1 %}
+            <li>
+                <a class="join-item btn btn-ghost text-md" href="{{ url_for('characters', page=page-1) }}"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                    </svg> 
+                </a>
+            </li>
+            {% endif %}
+            <li><a class="join-item btn btn-ghost text-md" href="{{ url_for('characters', page=page) }}"> {{ page }} </a></li>
+            <li>
+                <a class="join-item btn btn-ghost text-md" href="{{ url_for('characters', page=page+1) }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
 
     {% include 'global/footer.html' %}
 </body>

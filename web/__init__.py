@@ -18,7 +18,10 @@ def start_app():
     # ---------------------------------- MODULO PERSONAJES
     @app.route('/characters', methods=['GET'])
     def characters():
-        return render_template('characters.html')
+        page = request.args.get('page', default=1, type=int)
+        characters = Character.results(Character.getAllPaged(page))
+        info = Character.info(Character.getAllPaged(page));
+        return render_template('characters.html', characters=characters, info=info, page=page)
     
     # ---------------------------------- MODULO EPISODIOS
     @app.route('/episodes', methods=['GET'])
