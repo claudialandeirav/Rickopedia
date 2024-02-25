@@ -13,20 +13,23 @@ def start_app():
     @app.route('/', methods=['GET'])
     def home():
         return render_template('home.html')
-    
 
     # ---------------------------------- MODULO PERSONAJES
     @app.route('/characters', methods=['GET'])
     def characters():
         page = request.args.get('page', default=1, type=int)
         characters = Character.results(Character.getAllPaged(page))
-        info = Character.info(Character.getAllPaged(page));
+        info = Character.info(Character.getAllPaged(page))
         return render_template('characters.html', characters=characters, info=info, page=page)
     
     # ---------------------------------- MODULO EPISODIOS
     @app.route('/episodes', methods=['GET'])
     def episodes():
-        return render_template('episodes.html')
+        numEpisodes = Episode.count(Episode.info(Episode.get_all()))
+        listaIdEpisodes = [i for i in range(1, numEpisodes + 1)]
+        episodes = Episode.getByList(listaIdEpisodes)
+        seasons = Episode.getEpisodes(episodes)
+        return render_template('episodes.html', seasons=seasons)
     
     # ---------------------------------- MODULO LOCALIZACIONES
     @app.route('/locations', methods=['GET'])

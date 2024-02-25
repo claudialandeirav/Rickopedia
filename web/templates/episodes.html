@@ -16,6 +16,41 @@
 
     <div class="h-1/6"></div> 
 
+    {% for season, episodes in seasons.items() %}
+    <div class="flex justify-center items-center px-6 pb-4 pt-2">
+        <div class="collapse collapse-arrow bg-base-200 w-4/5">
+            <input type="radio" name="season" checked="checked" /> 
+            <div class="collapse-title text-xl font-medium">
+                Season {{ season }}
+            </div>
+            <div class="collapse-content bg-base-100"> 
+                <div class="overflow-x-auto flex justify-center items-center">
+                    <table class="table w-4/5">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Episode</th>
+                                <th>Name</th>
+                                <th>Air date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for episode in episodes %}
+                            <tr class="text-center hover:bg-gray-100 cursor-pointer">
+                                <td><div class="font-bold text-center">{{ episode['episode'] }}</div></td>
+                                <td> {{ episode['name'] }} </td>
+                                <td> {{ episode['air_date'] }} </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+     
+    <div class="h-1/5"></div> 
+
     {% include 'global/footer.html' %}
 </body>
 </html>

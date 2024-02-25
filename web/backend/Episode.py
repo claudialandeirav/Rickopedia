@@ -27,6 +27,14 @@ class Episode:
         return Global.data(f'{Global.getUrlEpisode()}{idEpisode}')
     
     '''
+    Funcion getByList
+    Autora: Claudia Landeira
+
+    Devuelve los datos de los episodios por lista de ids
+    '''
+    def getByList(lista):
+        return Global.data(f"{Global.getUrlEpisode()}{lista}")
+    '''
     Funcion filter
     Autora: Claudia Landeira
 
@@ -61,7 +69,7 @@ class Episode:
         count = Episode.count(info)
         pages = Episode.pages(info)
         
-        return [count, pages]
+        return {'count': count, 'pages': pages}
     
     '''
     Funcion count
@@ -134,3 +142,18 @@ class Episode:
     '''
     def characters(data):
         return data['characters']
+    
+    '''
+    Funcion getEpisodes
+    Autora: Claudia Landeira
+
+    Devuelve un listado de los episodios y sus datos separados por temporadas
+    '''
+    def getEpisodes(episodes):
+        seasons = {}
+        for episode in episodes:
+            season_num = episode['episode'][:3]
+            if season_num not in seasons:
+                seasons[season_num] = []
+            seasons[season_num].append(episode)
+        return seasons
