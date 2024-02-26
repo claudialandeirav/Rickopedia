@@ -19,22 +19,28 @@ def start_app():
     def characters():
         page = request.args.get('page', default=1, type=int)
         characters = Character.results(Character.getAllPaged(page))
-        info = Character.info(Character.getAllPaged(page))
-        return render_template('characters.html', characters=characters, info=info, page=page)
+        return render_template('characters.html', characters=characters, page=page)
     
     # ---------------------------------- MODULO EPISODIOS
     @app.route('/episodes', methods=['GET'])
     def episodes():
         numEpisodes = Episode.count(Episode.info(Episode.get_all()))
-        listaIdEpisodes = [i for i in range(1, numEpisodes + 1)]
-        episodes = Episode.getByList(listaIdEpisodes)
+        listIdEpisodes = [i for i in range(1, numEpisodes + 1)]
+        episodes = Episode.getByList(listIdEpisodes)
         seasons = Episode.getEpisodes(episodes)
         return render_template('episodes.html', seasons=seasons)
     
     # ---------------------------------- MODULO LOCALIZACIONES
     @app.route('/locations', methods=['GET'])
     def locations():
-        return render_template('locations.html')
+        page = request.args.get('page', default=1, type=int)
+        locations = Location.results(Location.getAllPaged(page))
+        graph = Location.createGraph(locations)
+        imageLocations = Location.createImage(graph)
+        nodesLinked = Location.nodesLinked(graph)
+
+        return render_template('locations.html', imageLocations=imageLocations, nodesLinked=nodesLinked, 
+                               locations=locations, page=page)
 
     # ---------------------------------- MODULO DOCS
     @app.route('/docs', methods=['GET'])

@@ -8,13 +8,64 @@
 
     <div class="h-1/6"></div> 
 
-    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+    <div class="rounded-box flex grow flex-col px-6 pt-12 text-center">
         <div class="font-title text-8xl font-black leading-none">Locations</div> 
-        <div class="h-1/6"></div> 
-        <p class="text-4xl mx-auto font-sans font-light"></p> 
     </div>
+    <div role="tablist" class="tabs tabs-lifted">
+        <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Map" checked/>
+        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+            <img src="data:image/png;base64, {{ imageLocations }}" alt="graph locations"/>
+        </div>
+        
+        <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Table" />
+        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+            <div class="overflow-x-auto flex justify-center items-center">
+                <table class="table w-4/5">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Dimension</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for location in locations %}
+                        <tr class="text-center hover:bg-gray-100 cursor-pointer">
+                            <td>
+                                <div class="font-bold text-center">{{ location['name'] }}</div>
+                            </td>
+                            <td> {{ location['type'] }} </td>
+                            <td> {{ location['dimension'] }} </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
 
-    <div class="h-1/6"></div> 
+    <div class="join join-center justify-center md:flex pb-8">
+        <ul class="menu menu-horizontal md:menu-horizontal bg-base-200 rounded-box">
+            {% if page > 1 %}
+            <li>
+                <a class="join-item btn btn-ghost text-md" href="{{ url_for('locations', page=page-1) }}"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                    </svg> 
+                </a>
+            </li>
+            {% endif %}
+            <li><a class="join-item btn btn-ghost text-md" href="{{ url_for('locations', page=page) }}"> {{ page }} </a></li>
+            <li>
+                <a class="join-item btn btn-ghost text-md" href="{{ url_for('locations', page=page+1) }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
 
     {% include 'global/footer.html' %}
 </body>
