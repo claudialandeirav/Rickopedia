@@ -21,6 +21,21 @@ def start_app():
         characters = Character.results(Character.getAllPaged(page))
         return render_template('characters.html', characters=characters, page=page)
     
+    @app.route('/character/<id>', methods=['GET'])
+    def character(id):
+        character = Character.getById(id)
+        name = Character.name(character)
+        status = Character.status(character)
+        species = Character.species(character)
+        type = Character.type(character)
+        gender = Character.gender(character)
+        origin = Character.origin(character)
+        location = Character.location(character)
+        image = Character.image(character)
+        episodes = Character.episode(character)
+        return render_template('character.html', id=id, name=name, status=status, species=species, type=type,
+                               gender=gender, origin=origin, location=location, image=image, episodes=episodes)
+    
     # ---------------------------------- MODULO EPISODIOS
     @app.route('/episodes', methods=['GET'])
     def episodes():

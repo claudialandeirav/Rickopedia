@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="es">
+
+{% include 'global/header.html' %}
+
+<body>
+    {% include 'global/menu.html' %}
+
+    <div class="h-1/6"></div> 
+
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12">
+        <div class="grid grid-cols-2 gap-5 justify-items-center">
+            <div class="card col bg-base-100 shadow-xl">
+                <figure><img src="{{ image }}" alt="{{ name }}" /></figure>
+            </div>
+            <div class="col grid grid-cols-2 justify-items-start">
+                <div class="col justify-self-center">
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <div class="font-title text-2xl font-black leading-none">Name</div> 
+                        <div class="h-1/6"></div> 
+                    </div>
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <div class="font-title text-2xl font-black leading-none">Status</div> 
+                        <div class="h-1/6"></div> 
+                    </div>
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <div class="font-title text-2xl font-black leading-none">Specie</div> 
+                        <div class="h-1/6"></div> 
+                    </div>
+                    {% if type %}
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <div class="font-title text-2xl font-black leading-none">Type</div> 
+                        <div class="h-1/6"></div> 
+                    </div>
+                    {% endif %}
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <div class="font-title text-2xl font-black leading-none">Gender</div> 
+                        <div class="h-1/6"></div> 
+                    </div>
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <div class="font-title text-2xl font-black leading-none">Origin</div> 
+                        <div class="h-1/6"></div> 
+                    </div>
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <div class="font-title text-2xl font-black leading-none">Actual location</div> 
+                        <div class="h-1/6"></div> 
+                    </div>
+                </div>
+                <div class="col justify-self-center">
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <p class="text-1xl mx-auto font-sans font-light">{{ name }}</p>  
+                        <div class="h-1/6"></div> 
+                    </div>
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        {% if status == 'Alive' %}
+                        <p class="text-1xl mx-auto badge badge-success badge-outline font-sans font-light">{{ status }}</p>  
+                        {% endif %}
+                        {% if status == 'Dead' %}
+                        <p class="text-1xl mx-auto badge badge-error badge-outline font-sans font-light">{{ status }}</p>  
+                        {% endif %}
+                        {% if status == 'unknown' %}
+                        <p class="text-1xl mx-auto badge badge-outline font-sans font-light">{{ status }}</p>  
+                        {% endif %}
+                        <div class="h-1/6"></div> 
+                    </div>
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <p class="text-1xl mx-auto font-sans font-light">{{ species }}</p>  
+                        <div class="h-1/6"></div> 
+                    </div>
+                    {% if type %}
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <p class="text-1xl mx-auto font-sans font-light">{{ type }}</p>  
+                        <div class="h-1/6"></div> 
+                    </div>
+                    {% endif %}
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <p class="text-1xl mx-auto font-sans font-light">{{ gender }}</p>  
+                        <div class="h-1/6"></div> 
+                    </div>
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <p class="text-1xl mx-auto font-sans font-light">{{ origin['name'] }}</p>  
+                        <div class="h-1/6"></div> 
+                    </div>
+                    <div class="rounded-box flex grow flex-col pb-4 text-left">
+                        <p class="text-1xl mx-auto font-sans font-light">{{ location['name'] }}</p>  
+                        <div class="h-1/6"></div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="h-1/6"></div> 
+
+    <!--div class="overflow-x-auto flex justify-center items-center">
+        <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+            <div class="font-title text-2xl font-black leading-none">Episodes</div> 
+            <div class="h-1/6"></div> 
+        </div>
+        <table class="table w-4/5">
+            <thead>
+                <tr class="text-center">
+                    <th>Name</th>
+                    <th>Specie</th>
+                    <th>Gender</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for character in characters %}
+                <tr class="text-center hover:bg-gray-100 cursor-pointer">
+                    <td>
+                        <div class="flex items-center text-center gap-4">
+                            <div class="avatar">
+                                <div class="mask mask-squircle w-12 h-12">
+                                    <img src="{{ character['image'] }}" alt="image" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-center">{{ character['name'] }}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td> {{ character['species'] }} </td>
+                    <td> {{ character['gender'] }} </td>
+                    {% if character['status'] == 'Alive' %}
+                    <td> 
+                        <div class="badge badge-success badge-outline gap-2">
+                            {{ character['status'] }}
+                        </div>
+                    </td>
+                    {% endif %}
+                    {% if character['status'] == 'Dead' %}
+                    <td> 
+                        <div class="badge badge-error badge-outline gap-2">
+                            {{ character['status'] }}
+                        </div>
+                    </td>
+                    {% endif %}
+                    {% if character['status'] == 'unknown' %}
+                    <td> 
+                        <div class="badge badge-outline gap-2">
+                            {{ character['status'] }}
+                        </div>
+                    </td>
+                    {% endif %}
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div-->
+    {% include 'global/footer.html' %}
+</body>
+</html>
