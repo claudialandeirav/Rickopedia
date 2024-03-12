@@ -230,5 +230,5 @@ class Character:
         for i in urls:
             episodeId = re.search(r'/(\d+)$', i).group(1)
             episodeIds.append(episodeId)
-        return episodeIds
+        return list(map(int, episodeIds))
     
