@@ -1,4 +1,5 @@
 from web.backend.Global import Global
+import re
 
 '''
 Clase Character
@@ -78,8 +79,11 @@ class Character:
         origin = data['origin']
         name = Character.name(origin)
         url = Character.url(origin)
-
-        return {'name': name, 'url': url}
+        id = None
+        originId = re.search(r'/(\d+)$', url)
+        if (originId):
+            id = originId.group(1)
+        return {'name': name, 'id': id}
     
     '''
     Funcion location
@@ -91,8 +95,11 @@ class Character:
         location = data["location"]
         name = Character.name(location)
         url = Character.url(location)
-
-        return {'name': name, 'url': url}
+        id = None
+        locationId = re.search(r'/(\d+)$', url)
+        if (locationId):
+            id = locationId.group(1)
+        return {'name': name, 'id': id}
         
     '''
     Funcion results
@@ -218,5 +225,10 @@ class Character:
     Devuelve el listado de los episodios en los que aparece el personaje
     '''
     def episode(data):
-        return data['episode']
+        urls = data['episode']
+        episodeIds = []
+        for i in urls:
+            episodeId = re.search(r'/(\d+)$', i).group(1)
+            episodeIds.append(episodeId)
+        return list(map(int, episodeIds))
     

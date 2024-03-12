@@ -21,6 +21,21 @@ def start_app():
         characters = Character.results(Character.getAllPaged(page))
         return render_template('characters.html', characters=characters, page=page)
     
+    @app.route('/character/<id>', methods=['GET'])
+    def character(id):
+        character = Character.getById(id)
+        name = Character.name(character)
+        status = Character.status(character)
+        species = Character.species(character)
+        type = Character.type(character)
+        gender = Character.gender(character)
+        origin = Character.origin(character)
+        location = Character.location(character)
+        image = Character.image(character)
+        episodes = Episode.getByList(Character.episode(character))
+        return render_template('character.html', id=id, name=name, status=status, species=species, type=type,
+                               gender=gender, origin=origin, location=location, image=image, episodes=episodes)
+    
     # ---------------------------------- MODULO EPISODIOS
     @app.route('/episodes', methods=['GET'])
     def episodes():
@@ -30,6 +45,15 @@ def start_app():
         seasons = Episode.getEpisodes(episodes)
         return render_template('episodes.html', seasons=seasons)
     
+    @app.route('/episode', methods=['GET'])
+    def episode(id):
+        episode = Episode.getById(id)
+        name = Episode.name(episode)
+        air_date = Episode.air_date(episode)
+        episode_code = Episode.getEpisode(episode)        
+        characters = Episode.characters(episode)
+        return render_template('episode.html', id=id, name=name, air_date=air_date, episode_code=episode_code, characters=characters)
+
     # ---------------------------------- MODULO LOCALIZACIONES
     @app.route('/locations', methods=['GET'])
     def locations():

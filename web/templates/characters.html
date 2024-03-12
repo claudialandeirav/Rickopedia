@@ -27,7 +27,7 @@
             </thead>
             <tbody>
                 {% for character in characters %}
-                <tr class="text-center hover:bg-gray-100 cursor-pointer">
+                <tr class="text-center hover:bg-gray-100 cursor-pointer" onclick="window.location.href='{{ url_for( 'character' , id=character['id'] ) }}';">
                     <td>
                         <div class="flex items-center text-center gap-4">
                             <div class="avatar">

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="es">
+
+{% include 'global/header.html' %}
+
+<body>
+    {% include 'global/menu.html' %}
+
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+        <div class="font-title text-6xl font-black leading-none">{{ name }}</div> 
+        <div class="h-1/6"></div> 
+    </div>
+    
+    <div class="flex grow flex-col px-6 pb-8 pt-12">
+        <div class="grid grid-cols-2 gap-5 justify-items-center">
+            <div class="card max-width="300px" max-height="300px" col bg-base-100 shadow-xl">
+                <figure><img class="rounded-box" src="{{ image }}" alt="{{ name }}" /></figure>
+            </div>
+            <div class="overflow-x-auto col flex justify-center items-center">
+                <table class="table">
+                    <tbody>
+                        <tr class="text-left">
+                            <th class="font-title text-2xl font-black leading-none">Status</th>
+                            <td class="text-1xl mx-auto font-sans font-light">
+                                {% if status == 'Alive' %}
+                                <div class="badge badge-success badge-outline">{{ status }}</div>     
+                                {% endif %}
+                                {% if status == 'Dead' %}
+                                <div class="badge badge-error badge-outline">{{ status }}</div>     
+                                {% endif %}
+                                {% if status == 'unknown' %}                      
+                                <div class="badge badge-outline">{{ status }}</div>     
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr class="text-left">
+                            <th class="font-title text-2xl font-black leading-none">Specie</th>
+                            <td class="text-1xl mx-auto font-sans font-light">{{ species }}</td>                           
+                        </tr>
+                        {% if type %}
+                        <tr class="text-left">
+                            <th class="font-title text-2xl font-black leading-none">Type</th>
+                            <td class="text-1xl mx-auto font-sans font-light">{{ type }}</td>                           
+                        </tr>
+                        {% endif %}
+                        <tr class="text-left">
+                            <th class="font-title text-2xl font-black leading-none">Gender</th>
+                            <td class="text-1xl mx-auto font-sans font-light">{{ gender }}</td>                           
+                        </tr>
+                        <tr class="text-left">
+                            <th class="font-title text-2xl font-black leading-none">Origin</th>
+                            <td class="text-1xl mx-auto font-sans font-light">{{ origin['name'] }}</td>                           
+                        </tr>
+                        <tr class="text-left">
+                            <th class="font-title text-2xl font-black leading-none">Actual location</th>
+                            <td class="text-1xl mx-auto font-sans font-light">{{ location['name'] }}</td>                           
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="h-1/6"></div> 
+
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+        <div class="font-title text-4xl font-black leading-none">appears in...</div> 
+        <div class="h-1/6"></div> 
+    </div>
+    <div class="h-1/6"></div> 
+
+    <div class="overflow-x-auto flex justify-center items-center pb-10">
+        <table class="table w-4/5">
+            <thead>
+                <tr class="text-center">
+                    <th>Episode</th>
+                    <th>Name</th>
+                    <th>Air date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for episode in episodes %}
+                <tr class="text-center hover:bg-gray-100 cursor-pointer" onclick="window.location.href='{{ url_for( 'episode' , id=episode['id'] ) }}';">
+                    <td> {{ episode['episode'] }} </td>
+                    <td> <div class="font-bold text-center">{{ episode['name'] }}</div> </td>
+                    <td> {{ episode['air_date'] }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="h-1/6"></div> 
+
+    {% include 'global/footer.html' %}
+</body>
+</html>

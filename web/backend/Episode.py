@@ -157,3 +157,15 @@ class Episode:
                 seasons[season_num] = []
             seasons[season_num].append(episode)
         return seasons
+    
+    '''
+    Funcion getEpisode
+    Autora: Claudia Landeira
+
+    Devuelve el episodio y con su temporada
+    '''
+    def getEpisode(episode):
+        code = {}
+        season_num = episode['episode'][:3]
+        episode_num = episode['episode'][-2:]
+        return code[season_num[-2:]].append(episode_num)
