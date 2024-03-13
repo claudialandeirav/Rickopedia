@@ -167,5 +167,6 @@ class Episode:
     def getEpisode(episode):
         code = {}
         season_num = episode['episode'][:3]
-        episode_num = episode['episode'][-2:]
-        return code[season_num[-2:]].append(episode_num)
+        episode_num = episode['episode'][-3:]
+        code[season_num] = episode_num
+        return code

@@ -45,7 +45,7 @@ def start_app():
         seasons = Episode.getEpisodes(episodes)
         return render_template('episodes.html', seasons=seasons)
     
-    @app.route('/episode', methods=['GET'])
+    @app.route('/episode/<id>', methods=['GET'])
     def episode(id):
         episode = Episode.getById(id)
         name = Episode.name(episode)
