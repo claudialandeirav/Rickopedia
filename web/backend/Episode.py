@@ -1,4 +1,6 @@
 from web.backend.Global import Global
+import json
+import re
 
 '''
 Clase Episode
@@ -34,6 +36,7 @@ class Episode:
     '''
     def getByList(lista):
         return Global.data(f"{Global.getUrlEpisode()}{lista}")
+    
     '''
     Funcion filter
     Autora: Claudia Landeira
@@ -135,21 +138,15 @@ class Episode:
         return data['episode']
     
     '''
-    Funcion characters
-    Autora: Claudia Landeira
-
-    Devuelve el listado de personajes que aparecen en el episodio
-    '''
-    def characters(data):
-        return data['characters']
-    
-    '''
     Funcion getEpisodes
     Autora: Claudia Landeira
 
     Devuelve un listado de los episodios y sus datos separados por temporadas
     '''
-    def getEpisodes(episodes):
+    def getEpisodes():
+        numEpisodes = Episode.count(Episode.info(Episode.get_all()))
+        listIdEpisodes = [i for i in range(1, numEpisodes + 1)]
+        episodes = Episode.getByList(listIdEpisodes)
         seasons = {}
         for episode in episodes:
             season_num = episode['episode'][:3]
@@ -170,3 +167,42 @@ class Episode:
         episode_num = episode['episode'][-3:]
         code[season_num] = episode_num
         return code
+    
+
+    '''
+    Funcion getEpisodeDescriptions
+    Autora: Claudia Landeira
+
+    Devuelve los datos del archivo /data/episodes.json
+    '''
+    def getEpisodesSummary():
+        with open('./web/data/episodes.json', 'r') as summarys:
+            summary = summarys.read()
+            datos = json.loads(summary)
+        
+        return datos
+    
+    '''
+    Funcion getDescription
+    Autora: Claudia Landeira
+
+    Devuelve la descripcion del capitulo por su id
+    '''
+    def getSummary(data, id):
+        for d in data:
+            if (d["id"] == int(id)):
+                return d["summary"]
+        
+    '''
+    Funcion character
+    Autora: Claudia Landeira
+
+    Devuelve el listado de los personajes en los que aparece en un episodio
+    '''
+    def character(data):
+        urls = data['characters']
+        characterIds = []
+        for i in urls:
+            characterId = re.search(r'/(\d+)$', i).group(1)
+            characterIds.append(characterId)
+        return list(map(int, characterIds))

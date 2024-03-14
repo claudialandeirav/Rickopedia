@@ -28,6 +28,15 @@ class Character:
         return Global.data(f"{Global.getUrlCharacter()}{idCharacter}")
     
     '''
+    Funcion getByList
+    Autora: Claudia Landeira
+
+    Devuelve los datos de los personajes por lista de ids
+    '''
+    def getByList(lista):
+        return Global.data(f"{Global.getUrlCharacter()}{lista}")
+
+    '''
     Funcion filter
     Autora: Claudia Landeira
 
