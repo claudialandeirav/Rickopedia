@@ -10,6 +10,8 @@ def start_app():
     app = Flask(__name__, static_folder='static')
     app.secret_key='estoesunaclavesupersecreta'
 
+    episodesSummary = Episode.getEpisodesSummary();
+
     @app.route('/', methods=['GET'])
     def home():
         return render_template('home.html')
@@ -33,26 +35,25 @@ def start_app():
         location = Character.location(character)
         image = Character.image(character)
         episodes = Episode.getByList(Character.episode(character))
-        return render_template('character.html', id=id, name=name, status=status, species=species, type=type,
+        return render_template('character.html', id=int(id), name=name, status=status, species=species, type=type,
                                gender=gender, origin=origin, location=location, image=image, episodes=episodes)
     
     # ---------------------------------- MODULO EPISODIOS
     @app.route('/episodes', methods=['GET'])
     def episodes():
-        numEpisodes = Episode.count(Episode.info(Episode.get_all()))
-        listIdEpisodes = [i for i in range(1, numEpisodes + 1)]
-        episodes = Episode.getByList(listIdEpisodes)
-        seasons = Episode.getEpisodes(episodes)
+        seasons = Episode.getEpisodes()
         return render_template('episodes.html', seasons=seasons)
     
-    @app.route('/episode', methods=['GET'])
+    @app.route('/episode/<id>', methods=['GET'])
     def episode(id):
         episode = Episode.getById(id)
         name = Episode.name(episode)
         air_date = Episode.air_date(episode)
-        episode_code = Episode.getEpisode(episode)        
-        characters = Episode.characters(episode)
-        return render_template('episode.html', id=id, name=name, air_date=air_date, episode_code=episode_code, characters=characters)
+        episode_code = Episode.episode(episode)        
+        characters = Character.getByList(Episode.character(episode))
+        summary = Episode.getSummary(episodesSummary, id)
+        seasons = Episode.getEpisodes()
+        return render_template('episode.html', id=int(id), name=name, air_date=air_date, episode_code=episode_code, characters=characters, summary=summary, seasons=seasons)
 
     # ---------------------------------- MODULO LOCALIZACIONES
     @app.route('/locations', methods=['GET'])

@@ -18,8 +18,7 @@
 
     {% for season, episodes in seasons.items() %}
     <div class="flex justify-center items-center px-6 pb-4 pt-2">
-        <div class="collapse collapse-arrow bg-base-200 w-4/5">
-            <input type="radio" name="season" checked="checked" /> 
+        <div tabindex="0" class="collapse collapse-arrow bg-base-200 w-4/5">
             <div class="collapse-title text-xl font-medium">
                 Season {{ season }}
             </div>
@@ -35,7 +34,7 @@
                         </thead>
                         <tbody>
                             {% for episode in episodes %}
-                            <tr class="text-center hover:bg-gray-100 cursor-pointer">
+                            <tr class="text-center hover:bg-gray-100 cursor-pointer" onclick="window.location.href='{{ url_for( 'episode' , id=episode['id'] ) }}';">
                                 <td><div class="font-bold text-center">{{ episode['episode'] }}</div></td>
                                 <td> {{ episode['name'] }} </td>
                                 <td> {{ episode['air_date'] }} </td>
