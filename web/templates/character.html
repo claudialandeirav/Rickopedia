@@ -6,25 +6,34 @@
 <body>
     {% include 'global/menu.html' %}
 
-    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 ">
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 justify-center items-center">
         <div class="grid grid-cols-3 gap-5 justify-items-center">
+            {% if (id-1 > 0) %}
             <a href="{{ url_for( 'character' , id=id-1 ) }}" class="btn btn-circle btn-accent">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.03 20.03a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 1.06l-6.22 6.22h16.19a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 0 1 0 1.06Z" /></svg>
             </a>
+            {% else %}
+            <a disabled="disabled" class="btn btn-circle btn-accent">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.03 20.03a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 1.06l-6.22 6.22h16.19a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 0 1 0 1.06Z" /></svg>
+            </a>
+            {% endif %}
 
-            <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+            <div class="rounded-box flex grow flex-col px-6 pb-8 text-center">
                 <div class="font-title text-6xl font-black leading-none">{{ name }}</div> 
                 <div class="h-1/6"></div> 
             </div>
 
+            {% if (id+1 < numCharacters+1) %}
             <a href="{{ url_for( 'character' , id=id+1 ) }}" class="btn btn-circle btn-accent">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
             </a>
-
+            {% else %}
+            <a disabled="disabled" class="btn btn-circle btn-accent">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+            </a>
+            {% endif %}
         </div>
     </div>
-
-    
     
     <div class="flex grow flex-col px-6 pb-8 pt-12">
         <div class="grid grid-cols-2 gap-5 justify-items-center">

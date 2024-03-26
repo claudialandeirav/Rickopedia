@@ -11,12 +11,12 @@ Informacion de los episodios
 class Episode:
 
     '''
-    Funcion get_all
+    Funcion getAll
     Autora: Claudia Landeira
 
     Devuelve todos los episodios disponibles y sus datos
     '''
-    def get_all():
+    def getAll():
         return Global.data(Global.getUrlEpisode())
     
     '''
@@ -144,7 +144,7 @@ class Episode:
     Devuelve un listado de los episodios y sus datos separados por temporadas
     '''
     def getEpisodes():
-        numEpisodes = Episode.count(Episode.info(Episode.get_all()))
+        numEpisodes = Episode.count(Episode.info(Episode.getAll()))
         listIdEpisodes = [i for i in range(1, numEpisodes + 1)]
         episodes = Episode.getByList(listIdEpisodes)
         seasons = {}

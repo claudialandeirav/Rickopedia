@@ -8,44 +8,37 @@
 
     <div class="h-1/6"></div> 
 
-    <div class="rounded-box flex grow flex-col px-6 pt-12 text-center">
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
         <div class="font-title text-8xl font-black leading-none">Locations</div> 
+        <div class="h-1/6"></div> 
     </div>
-    <div role="tablist" class="tabs tabs-lifted">
-        <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Map" checked/>
-        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-            <img src="data:image/png;base64, {{ imageLocations }}" alt="graph locations"/>
-        </div>
-        
-        <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Table" />
-        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-            <div class="overflow-x-auto flex justify-center items-center">
-                <table class="table w-4/5">
-                    <thead>
-                        <tr class="text-center">
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Dimension</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for location in locations %}
-                        <tr class="text-center hover:bg-gray-100 cursor-pointer">
-                            <td>
-                                <div class="font-bold text-center">{{ location['name'] }}</div>
-                            </td>
-                            <td> {{ location['type'] }} </td>
-                            <td> {{ location['dimension'] }} </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+
+    <div class="h-1/6"></div> 
+
+    <div class="overflow-x-auto flex justify-center items-center">
+        <table class="table w-4/5">
+            <thead>
+                <tr class="text-center">
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Dimension</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for location in locations %}
+                <tr class="text-center hover:bg-gray-100 cursor-pointer" onclick="window.location.href='{{ url_for( 'location' , id=location['id'] ) }}';">
+                    <td>
+                        <div class="font-bold text-center">{{ location['name'] }}</div>
+                    </td>
+                    <td> {{ location['type'] }} </td>
+                    <td> {{ location['dimension'] }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     
-
-    <div class="join join-center justify-center md:flex pb-8">
+    <div class="join join-center justify-center md:flex pb-8 pt-12">
         <ul class="menu menu-horizontal md:menu-horizontal bg-base-200 rounded-box">
             {% if page > 1 %}
             <li>
