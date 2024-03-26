@@ -1,5 +1,3 @@
-import os
-
 from flask import Flask, render_template, request
 
 from web.backend.Character import Character
@@ -78,10 +76,10 @@ def start_app():
 
         return render_template('location.html', id=int(id), name=name, type=type, dimension=dimension, residents=residents, numLocations=numLocations)
 
-    # ---------------------------------- MODULO DOCS
-    @app.route('/docs', methods=['GET'])
-    def docs():
-        return render_template('docs.html')
+    # ---------------------------------- MODULO STATISTICS
+    @app.route('/statistics', methods=['GET'])
+    def statistics():
+        return render_template('statistics.html')
     
     # ---------------------------------- MODULO ABOUT
     @app.route('/about', methods=['GET'])
