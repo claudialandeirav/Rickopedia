@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, url_for, redirect, request, session, send_file
+from flask import Flask, render_template, request
 
 from web.backend.Character import Character
 from web.backend.Episode import Episode
@@ -35,8 +35,10 @@ def start_app():
         location = Character.location(character)
         image = Character.image(character)
         episodes = Episode.getByList(Character.episode(character))
-        return render_template('character.html', id=int(id), name=name, status=status, species=species, type=type,
-                               gender=gender, origin=origin, location=location, image=image, episodes=episodes)
+        numCharacters = Character.count(Character.info(Character.getAll()))
+
+        return render_template('character.html', id=int(id), name=name, status=status, species=species, type=type, gender=gender,
+                                origin=origin, location=location, image=image, episodes=episodes, numCharacters=numCharacters)
     
     # ---------------------------------- MODULO EPISODIOS
     @app.route('/episodes', methods=['GET'])
@@ -53,19 +55,28 @@ def start_app():
         characters = Character.getByList(Episode.character(episode))
         summary = Episode.getSummary(episodesSummary, id)
         seasons = Episode.getEpisodes()
-        return render_template('episode.html', id=int(id), name=name, air_date=air_date, episode_code=episode_code, characters=characters, summary=summary, seasons=seasons)
+        numEpisodes = Episode.count(Episode.info(Episode.getAll()))
+
+        return render_template('episode.html', id=int(id), name=name, air_date=air_date, episode_code=episode_code, characters=characters, summary=summary, seasons=seasons, numEpisodes=numEpisodes)
 
     # ---------------------------------- MODULO LOCALIZACIONES
     @app.route('/locations', methods=['GET'])
     def locations():
         page = request.args.get('page', default=1, type=int)
         locations = Location.results(Location.getAllPaged(page))
-        graph = Location.createGraph(locations)
-        imageLocations = Location.createImage(graph)
-        nodesLinked = Location.nodesLinked(graph)
 
-        return render_template('locations.html', imageLocations=imageLocations, nodesLinked=nodesLinked, 
-                               locations=locations, page=page)
+        return render_template('locations.html', locations=locations, page=page)
+    
+    @app.route('/location/<id>', methods=['GET'])
+    def location(id):
+        location = Location.getById(id)
+        name = Location.name(location)
+        type = Location.type(location)
+        dimension = Location.dimension(location)
+        residents = Character.getByList(Location.residents(location))
+        numLocations = Location.count(Location.info(Location.getAll()))
+
+        return render_template('location.html', id=int(id), name=name, type=type, dimension=dimension, residents=residents, numLocations=numLocations)
 
     # ---------------------------------- MODULO DOCS
     @app.route('/docs', methods=['GET'])

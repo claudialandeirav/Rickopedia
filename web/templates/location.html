@@ -9,9 +9,9 @@
     <div class="h-1/6"></div> 
     
     <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 justify-center items-center">
-        <div class="grid grid-cols-7 gap-5 justify-center items-center justify-items-center">
+        <div class="grid grid-cols-3 gap-5 justify-center items-center justify-items-center">
             {% if (id-1 > 0) %}
-            <a href="{{ url_for( 'episode' , id=id-1 ) }}" class="btn btn-circle btn-accent">
+            <a href="{{ url_for( 'location' , id=id-1 ) }}" class="btn btn-circle btn-accent">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.03 20.03a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 1.06l-6.22 6.22h16.19a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 0 1 0 1.06Z" /></svg>
             </a>
             {% else %}
@@ -20,20 +20,13 @@
             </a>
             {% endif %}
 
-            {% for season, episodes in seasons.items() %}
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn m-1">Season {{ season }}</div>
-                <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-80">
-                        {% for episode in episodes %}
-                        <li><a href="{{ url_for( 'episode' , id=episode['id'] ) }}"> {{ episode["episode"] }} - {{ episode["name"] }} </a></li>
-                        {% endfor %}
-                    </ul>
-                </ul>
+            <div class="rounded-box flex grow flex-col px-6 pb-8 text-center">
+                <div class="font-title text-6xl font-black leading-none pb-6">{{ name }}</div> 
+                <div class="h-1/6"></div> 
             </div>
-            {% endfor %}
             
-            {% if (id+1 < numEpisodes+1) %}
-            <a href="{{ url_for( 'episode' , id=id+1 ) }}" class="btn btn-circle btn-accent justify-center">
+            {% if (id+1 < numLocations+1) %}
+            <a href="{{ url_for( 'location' , id=id+1 ) }}" class="btn btn-circle btn-accent justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
             </a>
             {% else %}
@@ -45,29 +38,15 @@
     </div>
 
     <div class="rounded-box flex grow flex-col px-6 pb-8 text-center">
-        <div class="font-title text-6xl font-black leading-none pb-6">{{ name }}</div> 
+        <p class="text-4xl mx-auto font-sans font-light"> Type: {{ type }}</p> 
+        <p class="text-4xl mx-auto font-sans font-light"> Dimension: {{ dimension }}</p> 
         <div class="h-1/6"></div> 
-        <p class="text-4xl mx-auto font-sans font-light"> {{ episode_code }}</p> 
     </div>
 
-    <div class="h-1/6"></div> 
-
-    <div class="flex grow flex-col px-6 pb-8 justify-center items-center">
-        <div class="diff aspect-[16/9] rounded-box h-80 w-2/3">
-            <div class="diff-item-1">
-                <div class="rounded-box bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-5xl font-black grid place-content-center">May contain spoilers...</div>
-            </div>
-            <div class="diff-item-2">
-                <div class="rounded-box bg-base-200 text-2xl text-justify font-sans font-light grid place-content-center px-10">{{ summary }}</div>
-            </div>
-            <div class="diff-resizer"></div>
-          </div>
-    </div>
-    
     <div class="h-1/6"></div> 
 
     <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
-        <div class="font-title text-4xl font-black leading-none">characters that appear...</div> 
+        <div class="font-title text-4xl font-black leading-none">residents...</div> 
     </div>
 
     <div class="h-1/6"></div>
@@ -83,7 +62,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for character in characters %}
+                {% for character in residents %}
                 <tr class="text-center hover:bg-gray-100 cursor-pointer" onclick="window.location.href='{{ url_for( 'character' , id=character['id'] ) }}';">
                     <td>
                         <div class="flex items-center text-center gap-4">

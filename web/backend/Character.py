@@ -37,6 +37,15 @@ class Character:
         return Global.data(f"{Global.getUrlCharacter()}{lista}")
 
     '''
+    Funcion getAll
+    Autora: Claudia Landeira
+
+    Devuelve toda la informacion
+    '''
+    def getAll():
+        return Global.data(Global.getUrlCharacter())
+
+    '''
     Funcion filter
     Autora: Claudia Landeira
 
