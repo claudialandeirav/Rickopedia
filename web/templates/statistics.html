@@ -10,8 +10,38 @@
 
     <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
         <div class="font-title text-8xl font-black leading-none">Statistics</div> 
-        <div class="h-1/6"></div> 
-        <p class="text-4xl mx-auto font-sans font-light"></p> 
+    </div>
+
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-8 justify-center items-center">
+        <div class="grid grid-cols-3 gap-5 justify-center items-center justify-items-center">
+            <div class="card w-96 bg-accent shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Total number of episodes</h2>
+                    <p>{{ numEpisodes }}</p>
+                </div>
+            </div>
+            <div class="card w-96 bg-accent shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Total number of locations</h2>
+                    <p>{{ numLocations }}</p>
+                </div>
+            </div>
+            <div class="card w-96 bg-accent shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Total number of characters</h2>
+                    <p>{{ numCharacters }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-8 justify-center items-center">
+            <div class="card w-2/5 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Distribution by gender</h2>
+                    <img src="data:image/png;base64,{{ genderCharacterInfo }}" alt="Distribution by gender">
+                </div>
+            </div>
     </div>
 
     <div class="h-1/6"></div> 

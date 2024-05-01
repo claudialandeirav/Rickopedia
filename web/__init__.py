@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 from web.backend.Character import Character
 from web.backend.Episode import Episode
 from web.backend.Location import Location
+from web.backend.Statistics import Statistics
 
 def start_app():
     app = Flask(__name__, static_folder='static')
@@ -79,7 +80,15 @@ def start_app():
     # ---------------------------------- MODULO STATISTICS
     @app.route('/statistics', methods=['GET'])
     def statistics():
-        return render_template('statistics.html')
+        numEpisodes = Statistics.getNumEpisodes()
+        numLocations = Statistics.getNumLocations()
+        numCharacters = Statistics.getNumCharacters()
+
+        genderCharacterInfo = Statistics.graphicGenderCharacterInfo()
+
+        return render_template('statistics.html', 
+                               numEpisodes = int(numEpisodes), numLocations = int(numLocations), numCharacters = int(numCharacters),
+                               genderCharacterInfo = genderCharacterInfo)
     
     # ---------------------------------- MODULO ABOUT
     @app.route('/about', methods=['GET'])
