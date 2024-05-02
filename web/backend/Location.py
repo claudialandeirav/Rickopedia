@@ -1,5 +1,7 @@
 from web.backend.Global import Global
 import re
+import requests
+
 
 '''
 Clase Location
@@ -17,6 +19,24 @@ class Location:
     '''
     def getAllPaged(page):
         return Global.data(f"{Global.getUrlLocation()}?page={page}")
+    
+    '''
+    Funcion getAllNotPaged
+    Autora: Claudia Landeira
+
+    Obtener todos las localizaciones no paginados
+    '''
+    def getAllNotPaged():
+        url = Global.getUrlLocation()
+        locations = []
+        
+        while url:
+            data = requests.get(url).json()
+            locations.extend(data['results'])
+            url = data['info']['next']
+
+        return locations
+
     
     '''
     Funcion get

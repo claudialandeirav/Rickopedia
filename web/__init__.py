@@ -1,16 +1,16 @@
-import os
-
 from flask import Flask, render_template, request
 
 from web.backend.Character import Character
 from web.backend.Episode import Episode
 from web.backend.Location import Location
+from web.backend.Statistics import Statistics
 
 def start_app():
     app = Flask(__name__, static_folder='static')
     app.secret_key='estoesunaclavesupersecreta'
 
     episodesSummary = Episode.getEpisodesSummary();
+    allCharacters = Character.getAllNotPaged()
 
     @app.route('/', methods=['GET'])
     def home():
@@ -78,10 +78,25 @@ def start_app():
 
         return render_template('location.html', id=int(id), name=name, type=type, dimension=dimension, residents=residents, numLocations=numLocations)
 
-    # ---------------------------------- MODULO DOCS
-    @app.route('/docs', methods=['GET'])
-    def docs():
-        return render_template('docs.html')
+    # ---------------------------------- MODULO STATISTICS
+    @app.route('/statistics', methods=['GET'])
+    def statistics():
+        numEpisodes = Statistics.getNumEpisodes()
+        numLocations = Statistics.getNumLocations()
+        numCharacters = Statistics.getNumCharacters()
+
+        genderCharacterInfo = Statistics.createCircularGraphic(Statistics.getGenderCharacterInfo(allCharacters))
+        statusCharacterInfo = Statistics.createCircularGraphic(Statistics.getStatusCharacterInfo(allCharacters))
+        
+        genderNumInfo = Statistics.getNumGenderInfo(allCharacters)
+        statusNumInfo = Statistics.getNumStatusInfo(allCharacters)
+        speciesNumInfo = Statistics.getNumSpecieInfo(allCharacters)
+
+        return render_template('statistics.html', 
+                               numEpisodes = int(numEpisodes), numLocations = int(numLocations), numCharacters = int(numCharacters),
+                               genderCharacterInfo = genderCharacterInfo, genderNumInfo = genderNumInfo,
+                               statusCharacterInfo = statusCharacterInfo, statusNumInfo = statusNumInfo,
+                               speciesNumInfo = speciesNumInfo)
     
     # ---------------------------------- MODULO ABOUT
     @app.route('/about', methods=['GET'])
