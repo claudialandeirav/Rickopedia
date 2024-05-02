@@ -10,6 +10,7 @@ def start_app():
     app.secret_key='estoesunaclavesupersecreta'
 
     episodesSummary = Episode.getEpisodesSummary();
+    allCharacters = Character.getAllNotPaged()
 
     @app.route('/', methods=['GET'])
     def home():
@@ -84,11 +85,18 @@ def start_app():
         numLocations = Statistics.getNumLocations()
         numCharacters = Statistics.getNumCharacters()
 
-        genderCharacterInfo = Statistics.graphicGenderCharacterInfo()
+        genderCharacterInfo = Statistics.createCircularGraphic(Statistics.getGenderCharacterInfo(allCharacters))
+        statusCharacterInfo = Statistics.createCircularGraphic(Statistics.getStatusCharacterInfo(allCharacters))
+        
+        genderNumInfo = Statistics.getNumGenderInfo(allCharacters)
+        statusNumInfo = Statistics.getNumStatusInfo(allCharacters)
+        speciesNumInfo = Statistics.getNumSpecieInfo(allCharacters)
 
         return render_template('statistics.html', 
                                numEpisodes = int(numEpisodes), numLocations = int(numLocations), numCharacters = int(numCharacters),
-                               genderCharacterInfo = genderCharacterInfo)
+                               genderCharacterInfo = genderCharacterInfo, genderNumInfo = genderNumInfo,
+                               statusCharacterInfo = statusCharacterInfo, statusNumInfo = statusNumInfo,
+                               speciesNumInfo = speciesNumInfo)
     
     # ---------------------------------- MODULO ABOUT
     @app.route('/about', methods=['GET'])

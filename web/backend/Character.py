@@ -1,5 +1,6 @@
 from web.backend.Global import Global
 import re
+import requests
 
 '''
 Clase Character
@@ -18,6 +19,23 @@ class Character:
     def getAllPaged(page):
         return Global.data(f"{Global.getUrlCharacter()}?page={page}")
 
+    '''
+    Funcion getAllNotPaged
+    Autora: Claudia Landeira
+
+    Obtener todos los personajes no paginados
+    '''
+    def getAllNotPaged():
+        url = Global.getUrlCharacter()
+        characters = []
+        
+        while url:
+            data = requests.get(url).json()
+            characters.extend(data['results'])
+            url = data['info']['next']
+
+        return characters
+    
     '''
     Funcion get
     Autora: Claudia Landeira

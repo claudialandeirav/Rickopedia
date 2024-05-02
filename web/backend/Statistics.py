@@ -15,6 +15,7 @@ Información estadística de los datos obtenidos de la API
 '''
 class Statistics:
     
+
     '''
     Funcion getNumEpisodes
     Autora: Claudia Landeira
@@ -48,10 +49,10 @@ class Statistics:
 
     Devuelve al frecuencia de genero de los personajes
     '''
-    def getGenderCharacterInfo():
+    def getGenderCharacterInfo(allCharacters):
         gender_info = {}
 
-        for character in Character.results(Character.getAll()):
+        for character in allCharacters:
             gender = character["gender"]
             if gender in gender_info:
                 gender_info[gender] += 1
@@ -60,18 +61,65 @@ class Statistics:
 
         return gender_info
     
+    def getNumGenderInfo(allCharacters):
+        gender_info = Statistics.getGenderCharacterInfo(allCharacters)
+        return gender_info
+
     '''
-    Funcion graphicGenderCharacterInfo
+    Funcion getStatusCharacterInfo()
+    Autora: Claudia Landeira
+
+    Devuelve la frecuencia de estatus de los personajes
+    '''
+    def getStatusCharacterInfo(allCharacters):
+        status_info = {}
+
+        for character in allCharacters:
+            status = character["status"]
+            if status in status_info:
+                status_info[status] += 1
+            else:
+                status_info[status] = 1
+
+        return status_info
+
+    def getNumStatusInfo(allCharacters):
+        gender_info = Statistics.getStatusCharacterInfo(allCharacters)
+        return gender_info
+    
+    '''
+    Funcion getSpeciesCharacterInfo()
+    Autora: Claudia Landeira
+
+    Devuelve la frecuencia de especies de los personajes
+    '''
+    def getSpeciesCharacterInfo(allCharacters):
+        species_info = {}
+
+        for character in allCharacters:
+            specie = character['species']
+            if specie in species_info:
+                species_info[specie] += 1
+            else:
+                species_info[specie] = 1
+
+        return species_info
+
+    def getNumSpecieInfo(allCharacters):
+        specie_info = Statistics.getSpeciesCharacterInfo(allCharacters)
+        return specie_info
+    
+    '''
+    Funcion createCircularGraphic
     Autora: Claudia Laneira
 
-    Crea el gráfico de los datos de genero de los personajes
+    Crea el gráfico circular con los datos introducidos por parámetros
     '''
-    def graphicGenderCharacterInfo():
-        gender_data = Statistics.getGenderCharacterInfo()
-        labels = list(gender_data.keys())
-        sizes = list(gender_data.values())
+    def createCircularGraphic(data):
+        colors = ['#ADD8E6', '#4682B4', '#1E90FF', '#008B8B', '#5F9EA0', '#4B0082', '#6A5ACD', '#4169E1', '#000080', '#87CEEB']
 
-        colors = ['#007bff', '#4e73df', '#2e59d9']
+        labels = list(data.keys())
+        sizes = list(data.values())
 
         plt.figure(figsize=(5, 5))
 

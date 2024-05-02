@@ -35,13 +35,91 @@
         </div>
     </div>
 
-    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-8 justify-center items-center">
-            <div class="card w-2/5 shadow-xl">
+    <div class="rounded-box flex grow px-6 pb-8 pt-8 justify-center items-center">
+        <div class="grid grid-cols-3 gap-5 justify-center items-center justify-items-center">
+            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-accent w-96">
+                <div class="collapse-title text-xl font-medium">
+                    Gender Statistics
+                </div>
+                <div class="collapse-content"> 
+                    <div class="overflow-x-auto flex justify-center items-center">
+                        <table class="table w-4/5">
+                            <tbody>
+                                {% for gender, number in genderNumInfo.items() %}
+                                <tr class="text-center">
+                                    <td>
+                                        <div class="font-bold text-center">{{ gender }}</div>
+                                    </td>
+                                    <td> {{ number }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-accent w-96">
+                <div class="collapse-title text-xl font-medium">
+                    Status Statistics
+                </div>
+                <div class="collapse-content"> 
+                    <div class="overflow-x-auto flex justify-center items-center">
+                        <table class="table w-4/5">
+                            <tbody>
+                                {% for status, number in statusNumInfo.items() %}
+                                <tr class="text-center">
+                                    <td>
+                                        <div class="font-bold text-center">{{ status }}</div>
+                                    </td>
+                                    <td> {{ number }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-accent w-96">
+                <div class="collapse-title text-xl font-medium">
+                    Specie Statistics
+                </div>
+                <div class="collapse-content"> 
+                    <div class="overflow-x-auto flex justify-center items-center">
+                        <table class="table w-4/5">
+                            <tbody>
+                                {% for specie, number in speciesNumInfo.items() %}
+                                <tr class="text-center">
+                                    <td>
+                                        <div class="font-bold text-center">{{ specie }}</div>
+                                    </td>
+                                    <td> {{ number }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rounded-box flex grow px-6 pb-8 pt-8 justify-center items-center">
+        <div class="columns-2">
+            <div class="card w-full shadow-xl">
                 <div class="card-body">
                     <h2 class="card-title">Distribution by gender</h2>
                     <img src="data:image/png;base64,{{ genderCharacterInfo }}" alt="Distribution by gender">
                 </div>
             </div>
+            <div class="card w-full shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Distribution by status</h2>
+                    <img src="data:image/png;base64,{{ statusCharacterInfo }}" alt="Distribution by status">
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="h-1/6"></div> 
@@ -49,3 +127,4 @@
     {% include 'global/footer.html' %}
 </body>
 </html>
+

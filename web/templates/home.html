@@ -17,7 +17,7 @@
     <div class="h-1/6"></div> 
 
     <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 ">
-        <div class="grid grid-cols-3 gap-5 justify-items-center">
+        <div class="grid grid-cols-4 gap-5 justify-items-center">
 
             <div class="card w-5/6 col bg-base-100 shadow-xl">
                 <figure><img src="{{ url_for('static', filename='images/RickMorty_Resumen.gif') }}" alt="Characters" /></figure>
@@ -52,6 +52,19 @@
                     <p>Find any location from Rick and Morty TV show</p>
                     <div class="card-actions justify-end">
                         <a href="{{ url_for('locations') }}" class="btn btn-circle btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card w-5/6 col bg-base-100 shadow-xl">
+                <figure><img src="{{ url_for('static', filename='images/RickMorty_Statistics.gif') }}" alt="Locations" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Statistics</h2>
+                    <p>Statistics from Rick and Morty TV show</p>
+                    <div class="card-actions justify-end">
+                        <a href="{{ url_for('statistics') }}" class="btn btn-circle btn-accent">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
                         </a>
                     </div>
@@ -112,19 +125,7 @@
     </div>
 
     <div class="rounded-box flex grow flex-col px-2 pb-8 pt-10 ">
-        <div class="grid grid-cols-7 gap-2 justify-items-center">
-
-            <div class="card h-44 bg-base-100 shadow-xl image-full">
-                <figure><img src="https://pbs.twimg.com/media/F7ff2kjW8AA28_E.jpg" alt="AdultSwim" /></figure>
-                <div class="card-body">
-                    <h2 class="">Adult Swim</h2>
-                    <div class="card-actions justify-end">
-                        <a href="https://www.adultswim.com/videos/rick-and-morty" class="btn btn-circle btn-accent">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" /></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>    
+        <div class="grid grid-cols-6 gap-2 justify-items-center">
         
             <div class="card h-5/6 bg-base-100 shadow-xl image-full">
                 <figure><img src="https://geekypin.com/assets/img/tarjetas/uploads/0ee3685845eb0dee6139b5fc0ba0cd9c.png" alt="Hulu" /></figure>
