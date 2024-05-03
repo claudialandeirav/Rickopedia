@@ -8,46 +8,64 @@
 
     <div class="h-1/6"></div> 
 
-    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+    <div class="rounded-box flex grow flex-col px-6 pb-2 pt-12 text-center">
         <div class="font-title text-8xl font-black leading-none">About</div> 
         <div class="h-1/6"></div> 
         <p class="text-4xl mx-auto font-sans font-light"></p> 
     </div>
 
-    <div class="h-1/6"></div> 
-<!--    
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
-        <div class="col-md-6 p-lg-5 mx-auto">
-            <h2 class="display-5">Rick and Morty</h2>
-            <p class="lead">Rick, a brilliant scientist, and Morty, his impressionable grandson, live dangerous adventures on other planets and parallel dimensions.</p> 
-            <p class="lead">"Rick and Morty" is an animated adult series that follows the adventures of Rick Sanchez, a genius and alcoholic scientist, and his grandson Morty Smith. 
-                Together, they explore alternate dimensions, face surreal situations, and tackle scientific challenges. The series blends science fiction with black and satirical humor, addressing profound themes while breaking the fourth wall and providing social commentary. 
-                The relationship between Rick and his family, along with improvisation in the writing, are key aspects that contribute to the show's appeal.</p> 
-        </div>
-
-        <div class="col-md-6 p-lg-5 mx-auto">
-            <h2 class="display-5">Rickopedia</h2>      
-            <p class="lead">Rickopedia is a wiki of all the information you can find about Rick and Morty.</p> 
-            <p class="lead">It is developed using the Rick and Morty API.</p> 
-            <p class="lead">It has been designed thinking that all this information can be found, searched and seen clearly and easily.</p>
-            <div class="d-flex gap-3 justify-content-center lead fw-normal">
-                <a class="icon-link" href="#">Suggestions <i class="bi bi-caret-right-fill"></i></a>
-                <a class="icon-link" href="https://rickandmortyapi.com/">Rick and Morty API <i class="bi bi-caret-right-fill"></i></a>
-            </div> 
-        </div> 
-
-        <div class="col-md-6 p-lg-5 mx-auto">
-            <h2 class="display-5">Author</h2>       
-            <p class="lead">The website has been made by Claudia Landeira for fun.</p>
-            <p class="lead">You can make suggestions through the suggestions button or write to me through my social networks.</p>
-            <p class="lead">The website is open source and is available in my GitHub Repository.</p>
-
-            <div class="d-flex gap-3 justify-content-center lead fw-normal">
-                <a class="icon-link" href="https://github.com/claudialandeirav/Rickopedia">GitHub Repository <i class="bi bi-caret-right-fill"></i></a>
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-6 text-center">
+        <p class="text-4xl mx-auto font-sans font-light">Welcome to Rick and Morty Universe!</p>
+        <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 ">
+            <div class="grid grid-cols-3 gap-5 justify-items-center">
+                <div class="card w-5/6 col bg-base-100 shadow-xl">
+                    <figure><img class="rounded-box" src="{{ url_for('static', filename='images/RickMorty_About1.gif') }}" alt="Locations" /></figure>
+                </div>
+                <div class="card w-5/6 col bg-base-100 shadow-xl">
+                    <figure><img class="rounded-box" src="{{ url_for('static', filename='images/RickMorty_About4.gif') }}" alt="Locations" /></figure>
+                </div>
+                <div class="card w-5/6 col bg-base-100 shadow-xl">
+                    <figure><img class="rounded-box" src="{{ url_for('static', filename='images/RickMorty_About3.gif') }}" alt="Locations" /></figure>
+                </div>
             </div>
         </div>
+
+        <p class="text-2xl pt-12 text-justify mx-auto w-3/4 font-sans font-light">
+            Rick, a brilliant scientist, and Morty, his impressionable grandson, live dangerous adventures on other planets and parallel dimensions.
+        </p> 
+        <p class="text-2xl pt-4 text-justify mx-auto w-3/4 font-sans font-light">
+            "Rick and Morty" is an animated adult series that follows the adventures of Rick Sanchez, a genius and alcoholic scientist, and his grandson Morty Smith. 
+            Together, they explore alternate dimensions, face surreal situations, and tackle scientific challenges. The series blends science fiction with black and satirical humor, addressing profound themes while breaking the fourth wall and providing social commentary. 
+            The relationship between Rick and his family, along with improvisation in the writing, are key aspects that contribute to the show's appeal.
+        </p> 
     </div>
--->
+
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-8 text-center">
+        <div class="font-title text-8xl font-black leading-none">Rickopedia</div>
+        <div class="h-1/6"></div> 
+        <p class="text-2xl pt-12 text-justify mx-auto w-3/4 font-sans font-light">
+            This a passionate platform dedicated to the vast universe of Rick and Morty, utilizing the official API of the series to provide you with a unique experience. 
+            Whether you're seeking in-depth information about your favorite characters, the most epic episodes, or the most memorable locations, you've come to the right place!
+        </p> 
+        <p class="text-2xl pt-4 text-justify mx-auto w-3/4 font-sans font-light">
+            We also offer an exclusive section of general statistics, compiled from the data provided by the API. 
+            How many characters have appeared in the series? What's the longest episode? 
+            Which location is the most visited? 
+            Find the answers to these questions and more on our statistics page.
+        </p> 
+        <p class="text-2xl pt-4 pb-6 text-justify mx-auto w-3/4 font-sans font-light">
+            At Rickopedia, we are committed to providing you with the best possible experience as you explore the Rick and Morty universe. 
+            Join us on this interdimensional adventure and discover everything our platform has to offer!
+        </p> 
+        <p class="text-2xl pt-4 pb-6 text-justify mx-auto w-3/4 font-sans font-light">
+            Let the search begin!
+        </p>
+        <div>
+            <a class="btn btn-wide btn-accent" href="https://rickandmortyapi.com/">Rick and Morty API</a>
+            <a class="btn btn-wide btn-accent" href="https://github.com/claudialandeirav/Rickopedia">GitHub Repository</a>
+        </div> 
+    </div>
+
     {% include 'global/footer.html' %}
 </body>
 </html>
