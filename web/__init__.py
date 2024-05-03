@@ -10,7 +10,6 @@ def start_app():
     app.secret_key='estoesunaclavesupersecreta'
 
     episodesSummary = Episode.getEpisodesSummary();
-    allCharacters = Character.getAllNotPaged()
 
     @app.route('/', methods=['GET'])
     def home():
@@ -85,6 +84,8 @@ def start_app():
         numLocations = Statistics.getNumLocations()
         numCharacters = Statistics.getNumCharacters()
 
+        allCharacters = Character.getAllNotPaged()
+        
         genderCharacterInfo = Statistics.createCircularGraphic(Statistics.getGenderCharacterInfo(allCharacters))
         statusCharacterInfo = Statistics.createCircularGraphic(Statistics.getStatusCharacterInfo(allCharacters))
         
