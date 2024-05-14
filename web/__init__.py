@@ -85,6 +85,7 @@ def start_app():
         numCharacters = Statistics.getNumCharacters()
 
         allCharacters = Character.getAllNotPaged()
+        allLocations = Location.getAllNotPaged()
         
         genderCharacterInfo = Statistics.createCircularGraphic(Statistics.getGenderCharacterInfo(allCharacters))
         statusCharacterInfo = Statistics.createCircularGraphic(Statistics.getStatusCharacterInfo(allCharacters))
@@ -93,11 +94,17 @@ def start_app():
         statusNumInfo = Statistics.getNumStatusInfo(allCharacters)
         speciesNumInfo = Statistics.getNumSpecieInfo(allCharacters)
 
+        typeNumInfo = Statistics.getNumTypeInfo(allLocations)
+        dimensionNumInfo = Statistics.getNumDimensionsInfo(allLocations)
+        
+        episodesPerSeasonNumInfo = Statistics.getEpisodesPerSeasonInfo()
+
         return render_template('statistics.html', 
                                numEpisodes = int(numEpisodes), numLocations = int(numLocations), numCharacters = int(numCharacters),
                                genderCharacterInfo = genderCharacterInfo, genderNumInfo = genderNumInfo,
                                statusCharacterInfo = statusCharacterInfo, statusNumInfo = statusNumInfo,
-                               speciesNumInfo = speciesNumInfo)
+                               speciesNumInfo = speciesNumInfo, typeNumInfo = typeNumInfo, dimensionNumInfo = dimensionNumInfo,
+                               episodesPerSeasonNumInfo = episodesPerSeasonNumInfo)
     
     # ---------------------------------- MODULO ABOUT
     @app.route('/about', methods=['GET'])

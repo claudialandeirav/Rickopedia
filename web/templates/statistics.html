@@ -106,6 +106,76 @@
     </div>
 
     <div class="rounded-box flex grow px-6 pb-8 pt-8 justify-center items-center">
+        <div class="grid grid-cols-3 gap-5 justify-center items-center justify-items-center">
+            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-accent w-96">
+                <div class="collapse-title text-xl font-medium">
+                    Type Location Statistics
+                </div>
+                <div class="collapse-content"> 
+                    <div class="overflow-x-auto flex justify-center items-center">
+                        <table class="table w-4/5">
+                            <tbody>
+                                {% for type, number in typeNumInfo.items() %}
+                                <tr class="text-center">
+                                    <td>
+                                        <div class="font-bold text-center">{{ type }}</div>
+                                    </td>
+                                    <td> {{ number }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-accent w-96">
+                <div class="collapse-title text-xl font-medium">
+                    Dimension Location Statistics
+                </div>
+                <div class="collapse-content"> 
+                    <div class="overflow-x-auto flex justify-center items-center">
+                        <table class="table w-4/5">
+                            <tbody>
+                                {% for dimension, number in dimensionNumInfo.items() %}
+                                <tr class="text-center">
+                                    <td>
+                                        <div class="font-bold text-center">{{ dimension }}</div>
+                                    </td>
+                                    <td> {{ number }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-accent w-96">
+                <div class="collapse-title text-xl font-medium">
+                    Season Statistics
+                </div>
+                <div class="collapse-content"> 
+                    <div class="overflow-x-auto flex justify-center items-center">
+                        <table class="table w-4/5">
+                            <tbody>
+                                {% for season, number in episodesPerSeasonNumInfo.items() %}
+                                <tr class="text-center">
+                                    <td>
+                                        <div class="font-bold text-center">{{ season }}</div>
+                                    </td>
+                                    <td> {{ number }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rounded-box flex grow px-6 pb-8 pt-8 justify-center items-center">
         <div class="columns-2">
             <div class="card w-full shadow-xl">
                 <div class="card-body">

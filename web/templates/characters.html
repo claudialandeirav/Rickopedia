@@ -26,10 +26,25 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <h2 class="font-bold text-3xl justify-left pb-8">Characters filters</h3>
-
-                    <input type="text" placeholder="Character name" class="input input-bordered input-sm w-10/12 pr-10"/>
-
+                    
                     <div class="grid grid-cols-2 gap-5 justify-items-center pt-4">
+                        <input type="text" placeholder="Character name" class="input input-bordered input-accent input-sm w-10/12 pr-10"/>
+                        <select class="select select-accent w-full select-sm max-w-xs">
+                            <option disabled selected>Species</option>
+                            <option>Human</option>
+                            <option>Alien</option>
+                            <option>Humanoid</option>
+                            <option>Poppybutthole</option>
+                            <option>Mythological Creature</option>
+                            <option>Animal</option>
+                            <option>Robot</option>
+                            <option>Cronenberg</option>
+                            <option>Disease</option>
+                            <option>unknown</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-5 justify-items-center pt-6">
                         <div>
                             <h3 class="font-bold justify-left">Status</h3>
                             <div class="form-control">
@@ -79,6 +94,10 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="pt-4">
+                        <a class="btn btn-wide btn-accent" href="">Apply Filters</a>
+                    </div> 
                 </div>
             </dialog>
         </div>

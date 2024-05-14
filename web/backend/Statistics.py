@@ -109,6 +109,62 @@ class Statistics:
         specie_info = Statistics.getSpeciesCharacterInfo(allCharacters)
         return specie_info
     
+    
+    '''
+    Funcion getTypesLocationsInfo()
+    Autora: Claudia Landeira
+
+    Devuelve la frecuencia de tipos de localizaciones
+    '''
+    def getTypesLocationsInfo(allLocations):
+        type_info = {}
+
+        for location in allLocations:
+            type = location['type']
+            if type in type_info:
+                type_info[type] += 1
+            else:
+                type_info[type] = 1
+
+        return type_info
+    
+    def getNumTypeInfo(allLocations):
+        type_info = Statistics.getTypesLocationsInfo(allLocations)
+        return type_info
+    
+
+    '''
+    Funcion getTypesLocationsInfo()
+    Autora: Claudia Landeira
+
+    Devuelve la frecuencia de tipos de localizaciones
+    '''
+    def getDimensionsLocationsInfo(allLocations):
+        dimension_info = {}
+
+        for location in allLocations:
+            dimension = location['dimension']
+            if dimension in dimension_info:
+                dimension_info[dimension] += 1
+            else:
+                dimension_info[dimension] = 1
+
+        return dimension_info
+    
+    def getNumDimensionsInfo(allLocations):
+        dimension_info = Statistics.getDimensionsLocationsInfo(allLocations)
+        return dimension_info
+    
+
+    def getEpisodesPerSeasonInfo():
+        episodesPerSeason = Episode.getEpisodes()
+        season_info = {}
+
+        for season, episodes in episodesPerSeason.items():
+            season_info[season] = len(episodes)
+
+        return season_info
+
     '''
     Funcion createCircularGraphic
     Autora: Claudia Laneira
