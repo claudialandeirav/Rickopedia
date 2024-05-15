@@ -28,7 +28,7 @@
                     <h2 class="font-bold text-3xl justify-left pb-8">Characters filters</h3>
                     
                     <div class="grid grid-cols-2 gap-5 justify-items-center pt-4">
-                        <input id="characterNameSearch" type="text" placeholder="Character name" class="input input-bordered input-accent input-sm w-10/12 pr-10"/>
+                        <input id="inputName" type="text" placeholder="Character name" class="input input-bordered input-accent input-sm w-10/12 pr-10"/>
                         <select id="selectSpecies" class="select select-accent w-full select-sm max-w-xs">
                             <option disabled selected>Species</option>
                             <option value="Human">Human</option>
@@ -45,58 +45,23 @@
                     </div>
 
                     <div class="grid grid-cols-2 gap-5 justify-items-center pt-6">
-                        <div>
-                            <h3 class="font-bold justify-left">Status</h3>
-                            <div class="form-control">
-                                <label class="label cursor-pointer">
-                                    <span class="label-text px-3">Alive</span> 
-                                    <input id="checkboxStatusAlive" type="checkbox" class="checkbox checkbox-success checkbox-sm" />
-                                </label>
-                            </div>
-                            <div class="form-control">
-                                <label class="label cursor-pointer">
-                                    <span class="label-text px-3">Dead</span> 
-                                    <input id="checkboxStatusDead" type="checkbox" class="checkbox checkbox-success checkbox-sm" />
-                                </label>
-                            </div>
-                            <div class="form-control">
-                                <label class="label cursor-pointer">
-                                    <span class="label-text px-3">Unknown</span> 
-                                    <input id="checkboxStatusUnknown" type="checkbox" class="checkbox checkbox-success checkbox-sm" />
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="font-bold justify-left">Gender</h3>
-                            <div class="form-control">
-                                <label class="label cursor-pointer">
-                                    <span class="label-text px-3">Female</span> 
-                                    <input id="checkboxGenderFemale" type="checkbox" class="checkbox checkbox-success checkbox-sm" />
-                                </label>
-                            </div>
-                            <div class="form-control">
-                                <label class="label cursor-pointer">
-                                    <span class="label-text px-3">Male</span> 
-                                    <input id="checkboxGenderMale" type="checkbox" class="checkbox checkbox-success checkbox-sm" />
-                                </label>
-                            </div>
-                            <div class="form-control">
-                                <label class="label cursor-pointer">
-                                    <span class="label-text px-3">Generless</span> 
-                                    <input id="checkboxGenderGenerless" type="checkbox" class="checkbox checkbox-success checkbox-sm" />
-                                </label>
-                            </div>
-                            <div class="form-control">
-                                <label class="label cursor-pointer">
-                                    <span class="label-text px-3">Unknown</span> 
-                                    <input id="checkboxGenderUnknown" type="checkbox" class="checkbox checkbox-success checkbox-sm" />
-                                </label>
-                            </div>
-                        </div>
+                        <select id="selectStatus" class="select select-accent w-full select-sm max-w-xs">
+                            <option disabled selected>Status</option>
+                            <option value="alive">Alive</option>
+                            <option value="dead">Dead</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
+                        <select id="selectGender" class="select select-accent w-full select-sm max-w-xs">
+                            <option disabled selected>Gender</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="genderless">Genderless</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
                     </div>
 
                     <div class="pt-4">
-                        <a class="btn btn-wide btn-accent" href="">Apply Filters</a>
+                        <button id="characterFilterButton" type="button" class="btn btn-wide btn-accent" href="">Apply Filters</button>
                     </div> 
                 </div>
             </dialog>
@@ -189,80 +154,44 @@
 
 <script>
 
-    // ---------------------------------- STATUS
-    var checkboxStatusAlive = document.getElementById('checkboxStatusAlive');
-    var checkboxStatusDead = document.getElementById('checkboxStatusDead');
-    var checkboxStatusUnknown = document.getElementById('checkboxStatusUnknown');
+    dataForm = {}
 
-    checkboxStatusAlive.addEventListener('change', function() {
-        if (this.checked) {
-            console.log('Checkbox marcado');
-            // Haz algo si el checkbox está marcado
-        } else {
-            console.log('Checkbox desmarcado');
-            // Haz algo si el checkbox está desmarcado
-        }
-    });
-    checkboxStatusDead.addEventListener('change', function() {
-        if (this.checked) {
-            console.log('Checkbox marcado');
-            // Haz algo si el checkbox está marcado
-        } else {
-            console.log('Checkbox desmarcado');
-            // Haz algo si el checkbox está desmarcado
-        }
-    });
-    checkboxStatusUnknown.addEventListener('change', function() {
-        if (this.checked) {
-            console.log('Checkbox marcado');
-            // Haz algo si el checkbox está marcado
-        } else {
-            console.log('Checkbox desmarcado');
-            // Haz algo si el checkbox está desmarcado
-        }
+    // ---------------------------------- STATUS
+    var selectStatus = document.getElementById('selectStatus');
+    selectStatus.addEventListener('change', function() {
+        var selectedOption = this.options[this.selectedIndex].value;
+        dataForm['selectStatus'] = selectedOption
     });
 
     // ---------------------------------- GENDER
-    var checkboxGenderFemale = document.getElementById('checkboxGenderFemale');
-    var checkboxGenderMale = document.getElementById('checkboxGenderMale');
-    var checkboxGenderGenerless = document.getElementById('checkboxGenderGenerless');
-    var checkboxGenderUnknown = document.getElementById('checkboxGenderUnknown');
-    
-    checkboxGenderFemale.addEventListener('change', function() {
-        if (this.checked) {
-            console.log('Checkbox marcado');
-        } else {
-            console.log('Checkbox desmarcado');
-        }
-    });
-    checkboxGenderMale.addEventListener('change', function() {
-        if (this.checked) {
-            console.log('Checkbox marcado');
-        } else {
-            console.log('Checkbox desmarcado');
-        }
-    });
-    checkboxGenderGenerless.addEventListener('change', function() {
-        if (this.checked) {
-            console.log('Checkbox marcado');
-        } else {
-            console.log('Checkbox desmarcado');
-        }
-    });
-    checkboxGenderUnknown.addEventListener('change', function() {
-        if (this.checked) {
-            console.log('Checkbox marcado');
-        } else {
-            console.log('Checkbox desmarcado');
-        }
+    var selectGender = document.getElementById('selectGender');
+    selectGender.addEventListener('change', function() {
+        var selectedOption = this.options[this.selectedIndex].value;
+        dataForm['selectGender'] = selectedOption
     });
 
     // ---------------------------------- SPECIE
     var selectSpecies = document.getElementById('selectSpecies');
-
     selectSpecies.addEventListener('change', function() {
         var selectedOption = this.options[this.selectedIndex].value;
-        console.log('Opción seleccionada:', selectedOption);
+        dataForm['selectSpecies'] = selectedOption
+    });
+
+    $(document).ready(function() {
+        $('#characterFilterButton').click(function() {
+            var inputName = document.getElementById('inputName');
+            dataForm['inputName'] = inputName.value
+            $.ajax({
+                type: 'POST',
+                url: '/characters',
+                data: dataForm,
+                success: function(response) {
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
     });
 
 </script>

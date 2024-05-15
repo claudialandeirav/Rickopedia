@@ -16,8 +16,8 @@ class Character:
 
     Devuelve todos los personajes disponibles y sus datos paginados
     '''
-    def getAllPaged(page):
-        return Global.data(f"{Global.getUrlCharacter()}?page={page}")
+    def getAllPaged(url, page):
+        return Global.data(f"{url}?page={page}")
 
     '''
     Funcion getAllNotPaged

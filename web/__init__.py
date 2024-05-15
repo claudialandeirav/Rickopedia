@@ -4,6 +4,7 @@ from web.backend.Character import Character
 from web.backend.Episode import Episode
 from web.backend.Location import Location
 from web.backend.Statistics import Statistics
+from web.backend.Global import Global
 
 def start_app():
     app = Flask(__name__, static_folder='static')
@@ -16,11 +17,32 @@ def start_app():
         return render_template('home.html')
 
     # ---------------------------------- MODULO PERSONAJES
-    @app.route('/characters', methods=['GET'])
+    @app.route('/characters', methods=['GET', 'POST'])
     def characters():
-        page = request.args.get('page', default=1, type=int)
-        characters = Character.results(Character.getAllPaged(page))
-        return render_template('characters.html', characters=characters, page=page)
+        if request.method == 'POST':
+            name = None
+            species = None
+            status = None
+            gender = None
+            filter = request.form
+
+            if 'inputName' in filter:
+                name = filter['inputName']
+            if 'selectSpecies' in filter:
+                species = filter['selectSpecies']
+            if 'selectStatus' in filter:
+                status = filter['selectStatus']
+            if 'selectGender' in filter:
+                gender = filter['selectGender']
+
+            page = request.args.get('page', default=1, type=int)
+            characters = Character.results(Character.filter(name = name, species = species, status = status, gender = gender))
+            return render_template('characters.html', characters=characters, page=page)
+        
+        else:
+            page = request.args.get('page', default=1, type=int)
+            characters = Character.results(Character.getAllPaged(Global.getUrlCharacter(),page))
+            return render_template('characters.html', characters=characters, page=page)
     
     @app.route('/character/<id>', methods=['GET'])
     def character(id):
