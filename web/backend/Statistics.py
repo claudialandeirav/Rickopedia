@@ -3,7 +3,7 @@ from web.backend.Character import Character
 from web.backend.Location import Location
 from web.backend.Episode import Episode
 
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 from io import BytesIO
 import base64
 
