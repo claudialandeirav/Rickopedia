@@ -22,47 +22,48 @@
             </button>
             <dialog id="characterFilter" class="modal">
                 <div class="modal-box w-11/12 max-w-5xl">
-                    <form method="dialog">
+                    <form method="POST" action="/characters">
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    </form>
-                    <h2 class="font-bold text-3xl justify-left pb-8">Characters filters</h3>
                     
-                    <div class="grid grid-cols-2 gap-5 justify-items-center pt-4">
-                        <input id="inputName" type="text" placeholder="Character name" class="input input-bordered input-accent input-sm w-10/12 pr-10"/>
-                        <select id="selectSpecies" class="select select-accent w-full select-sm max-w-xs">
-                            <option disabled selected>Species</option>
-                            <option value="Human">Human</option>
-                            <option value="Alien">Alien</option>
-                            <option value="Humanoid">Humanoid</option>
-                            <option value="Poppybutthole">Poppybutthole</option>
-                            <option value="Mythological Creature">Mythological Creature</option>
-                            <option value="Animal">Animal</option>
-                            <option value="Robot">Robot</option>
-                            <option value="Cronenberg">Cronenberg</option>
-                            <option value="Disease">Disease</option>
-                            <option value="unknown">unknown</option>
-                        </select>
-                    </div>
+                        <h2 class="font-bold text-3xl justify-left pb-8">Characters filters</h3>
+                        
+                        <div class="grid grid-cols-2 gap-5 justify-items-center pt-4">
+                            <input id="inputName" name="name" type="text" placeholder="Character name" class="input input-bordered input-accent input-sm w-10/12 pr-10" style="width: 320px;"/>
+                            <select id="selectSpecies" name="specie" class="select select-accent w-full select-sm max-w-xs">
+                                <option disabled selected>Species</option>
+                                <option value="Human">Human</option>
+                                <option value="Alien">Alien</option>
+                                <option value="Humanoid">Humanoid</option>
+                                <option value="Poppybutthole">Poppybutthole</option>
+                                <option value="Mythological Creature">Mythological Creature</option>
+                                <option value="Animal">Animal</option>
+                                <option value="Robot">Robot</option>
+                                <option value="Cronenberg">Cronenberg</option>
+                                <option value="Disease">Disease</option>
+                                <option value="unknown">unknown</option>
+                            </select>
+                        </div>
 
-                    <div class="grid grid-cols-2 gap-5 justify-items-center pt-6">
-                        <select id="selectStatus" class="select select-accent w-full select-sm max-w-xs">
-                            <option disabled selected>Status</option>
-                            <option value="alive">Alive</option>
-                            <option value="dead">Dead</option>
-                            <option value="unknown">Unknown</option>
-                        </select>
-                        <select id="selectGender" class="select select-accent w-full select-sm max-w-xs">
-                            <option disabled selected>Gender</option>
-                            <option value="female">Female</option>
-                            <option value="male">Male</option>
-                            <option value="genderless">Genderless</option>
-                            <option value="unknown">Unknown</option>
-                        </select>
-                    </div>
+                        <div class="grid grid-cols-2 gap-5 justify-items-center pt-6">
+                            <select id="selectStatus" name="status" class="select select-accent w-full select-sm max-w-xs">
+                                <option disabled selected>Status</option>
+                                <option value="alive">Alive</option>
+                                <option value="dead">Dead</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                            <select id="selectGender" name="gender" class="select select-accent w-full select-sm max-w-xs">
+                                <option disabled selected>Gender</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="genderless">Genderless</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                        </div>
 
-                    <div class="pt-4">
-                        <button id="characterFilterButton" type="button" class="btn btn-wide btn-accent" href="">Apply Filters</button>
-                    </div> 
+                        <div class="pt-4">
+                            <button id="characterFilterButton" type="submit" class="btn btn-wide btn-accent">Apply Filters</button>
+                        </div> 
+                    </form>
                 </div>
             </dialog>
         </div>
@@ -71,6 +72,7 @@
 
     <div class="h-1/6"></div> 
 
+    {% if characters|length > 0 %}
     <div class="overflow-x-auto flex justify-center items-center">
         <table class="table w-4/5">
             <thead>
@@ -125,7 +127,13 @@
             </tbody>
         </table>
     </div>
+    {% else %}
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+        <p class="text-4xl pt-12 mx-auto font-sans font-light">There is nothing here</p> 
+    </div>
+    {% endif %}
 
+    {% if page != 0 %}
     <div class="join join-center justify-center md:flex pb-8 pt-12">
         <ul class="menu menu-horizontal md:menu-horizontal bg-base-200 rounded-box">
             {% if page > 1 %}
@@ -147,51 +155,11 @@
             </li>
         </ul>
     </div>
+    {% else %}
+    <div class="join join-center justify-center md:flex pb-8 pt-12"></div></div>
+    {% endif %}
 
     {% include 'global/footer.html' %}
 </body>
 </html>
 
-<script>
-
-    dataForm = {}
-
-    // ---------------------------------- STATUS
-    var selectStatus = document.getElementById('selectStatus');
-    selectStatus.addEventListener('change', function() {
-        var selectedOption = this.options[this.selectedIndex].value;
-        dataForm['selectStatus'] = selectedOption
-    });
-
-    // ---------------------------------- GENDER
-    var selectGender = document.getElementById('selectGender');
-    selectGender.addEventListener('change', function() {
-        var selectedOption = this.options[this.selectedIndex].value;
-        dataForm['selectGender'] = selectedOption
-    });
-
-    // ---------------------------------- SPECIE
-    var selectSpecies = document.getElementById('selectSpecies');
-    selectSpecies.addEventListener('change', function() {
-        var selectedOption = this.options[this.selectedIndex].value;
-        dataForm['selectSpecies'] = selectedOption
-    });
-
-    $(document).ready(function() {
-        $('#characterFilterButton').click(function() {
-            var inputName = document.getElementById('inputName');
-            dataForm['inputName'] = inputName.value
-            $.ajax({
-                type: 'POST',
-                url: '/characters',
-                data: dataForm,
-                success: function(response) {
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
-        });
-    });
-
-</script>

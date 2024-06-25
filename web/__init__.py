@@ -20,30 +20,38 @@ def start_app():
     @app.route('/characters', methods=['GET', 'POST'])
     def characters():
         if request.method == 'POST':
-            name = None
-            species = None
-            status = None
-            gender = None
+            filters = {}
             filter = request.form
 
-            if 'inputName' in filter:
-                name = filter['inputName']
-            if 'selectSpecies' in filter:
-                species = filter['selectSpecies']
-            if 'selectStatus' in filter:
-                status = filter['selectStatus']
-            if 'selectGender' in filter:
-                gender = filter['selectGender']
+            if 'name' in filter:
+                name = filter['name']
+                filters["name"] = name
+            if 'specie' in filter:
+                species = filter['specie']
+                filters["species"] = species
+            if 'status' in filter:
+                status = filter['status']
+                filters["status"] = status
+            if 'gender' in filter:
+                gender = filter['gender']
+                filters["gender"] = gender
 
-            page = request.args.get('page', default=1, type=int)
-            characters = Character.results(Character.filter(name = name, species = species, status = status, gender = gender))
-            return render_template('characters.html', characters=characters, page=page)
-        
+            characters = {}
+            if (filters != {}):
+                allInfo, url = Character.filter(filters)
+                if ('error' not in allInfo):
+                    characters = Character.getAllNotPagedBydata(allInfo, url)
+
+            return render_template('characters.html', characters=characters, page=0)
+
         else:
             page = request.args.get('page', default=1, type=int)
             characters = Character.results(Character.getAllPaged(Global.getUrlCharacter(),page))
+
             return render_template('characters.html', characters=characters, page=page)
     
+
+
     @app.route('/character/<id>', methods=['GET'])
     def character(id):
         character = Character.getById(id)

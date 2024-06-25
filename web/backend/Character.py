@@ -36,6 +36,18 @@ class Character:
 
         return characters
     
+    def getAllNotPagedBydata(data, filters):
+        url = f'{Global.getUrlCharacter()}?page=1&{filters}'
+        characters = []
+        
+        while url:
+            data = requests.get(url).json()
+            characters.extend(data['results'])
+            url = data['info']['next']
+
+        return characters
+        
+
     '''
     Funcion get
     Autora: Claudia Landeira
@@ -63,34 +75,6 @@ class Character:
     def getAll():
         return Global.data(Global.getUrlCharacter())
 
-    '''
-    Funcion filter
-    Autora: Claudia Landeira
-
-    Devuelve toda la información dando la posiiblidad de filtrar por nombre, estatus, especie, tipo o genero
-    Todos los parámetros son optativos
-    '''
-    def filter(name=None, status=None, species=None, type=None, gender=None):        
-        param = {}
-
-        if name:
-            param["name"] = name
-        if status :
-            param["status"] = status
-        if species:
-            param["species"] = species
-        if type :
-            param["type"] = type
-        if gender:
-            param["gender"] = gender
-
-        filter = '&'.join(f'{key}={value}' for key, value in param.items())
-
-        if filter:
-            url = f'{Global.getUrlCharacter()}?{filter}'
-
-        return Global.data(url)
-    
     '''
     Funcion info
     Autora: Claudia Landeira
@@ -268,3 +252,16 @@ class Character:
             episodeIds.append(episodeId)
         return list(map(int, episodeIds))
     
+    '''
+    Funcion filter
+    Autora: Claudia Landeira
+
+    Devuelve toda la información dando la posiiblidad de filtrar por nombre, estatus, especie, tipo o genero
+    Todos los parámetros son optativos
+    '''
+    def filter (filters=None):
+        filter = '&'.join(f'{key}={value}' for key, value in filters.items())
+        if filter:
+            url = f'{Global.getUrlCharacter()}?{filter}'
+
+        return Global.data(url), filter
