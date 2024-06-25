@@ -20,25 +20,11 @@ def start_app():
     @app.route('/characters', methods=['GET', 'POST'])
     def characters():
         if request.method == 'POST':
-            filters = {}
             filter = request.form
 
-            if 'name' in filter:
-                name = filter['name']
-                filters["name"] = name
-            if 'specie' in filter:
-                species = filter['specie']
-                filters["species"] = species
-            if 'status' in filter:
-                status = filter['status']
-                filters["status"] = status
-            if 'gender' in filter:
-                gender = filter['gender']
-                filters["gender"] = gender
-
             characters = {}
-            if (filters != {}):
-                allInfo, url = Character.filter(filters)
+            if (filter != {}):
+                allInfo, url = Character.filter(filter)
                 if ('error' not in allInfo):
                     characters = Character.getAllNotPagedBydata(allInfo, url)
 
