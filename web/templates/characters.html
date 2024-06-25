@@ -9,12 +9,70 @@
     <div class="h-1/6"></div> 
 
     <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
-        <div class="font-title text-8xl font-black leading-none">Characters</div> 
+        <div class="grid grid-cols-3 gap-5 justify-items-center">
+            
+            <div></div> 
+
+            <div class="font-title text-8xl font-black leading-none">Characters</div> 
+
+            <button class="btn btn-circle btn-accent" onclick="characterFilter.showModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z"/>
+                </svg>
+            </button>
+            <dialog id="characterFilter" class="modal">
+                <div class="modal-box w-11/12 max-w-5xl">
+                    <form method="POST" action="/characters">
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    
+                        <h2 class="font-bold text-3xl justify-left pb-8">Characters filters</h3>
+                        
+                        <div class="grid grid-cols-2 gap-5 justify-items-center pt-4">
+                            <input id="inputName" name="name" type="text" placeholder="Character name" class="input input-bordered input-accent input-sm w-10/12 pr-10" style="width: 320px;"/>
+                            <select id="selectSpecies" name="specie" class="select select-accent w-full select-sm max-w-xs">
+                                <option disabled selected>Species</option>
+                                <option value="Human">Human</option>
+                                <option value="Alien">Alien</option>
+                                <option value="Humanoid">Humanoid</option>
+                                <option value="Poppybutthole">Poppybutthole</option>
+                                <option value="Mythological Creature">Mythological Creature</option>
+                                <option value="Animal">Animal</option>
+                                <option value="Robot">Robot</option>
+                                <option value="Cronenberg">Cronenberg</option>
+                                <option value="Disease">Disease</option>
+                                <option value="unknown">unknown</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-5 justify-items-center pt-6">
+                            <select id="selectStatus" name="status" class="select select-accent w-full select-sm max-w-xs">
+                                <option disabled selected>Status</option>
+                                <option value="alive">Alive</option>
+                                <option value="dead">Dead</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                            <select id="selectGender" name="gender" class="select select-accent w-full select-sm max-w-xs">
+                                <option disabled selected>Gender</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="genderless">Genderless</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                        </div>
+
+                        <div class="pt-4">
+                            <button id="characterFilterButton" type="submit" class="btn btn-wide btn-accent">Apply Filters</button>
+                        </div> 
+                    </form>
+                </div>
+            </dialog>
+        </div>
         <div class="h-1/6"></div> 
     </div>
 
     <div class="h-1/6"></div> 
 
+    {% if characters|length > 0 %}
     <div class="overflow-x-auto flex justify-center items-center">
         <table class="table w-4/5">
             <thead>
@@ -69,7 +127,13 @@
             </tbody>
         </table>
     </div>
+    {% else %}
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+        <p class="text-4xl pt-12 mx-auto font-sans font-light">There is nothing here</p> 
+    </div>
+    {% endif %}
 
+    {% if page != 0 %}
     <div class="join join-center justify-center md:flex pb-8 pt-12">
         <ul class="menu menu-horizontal md:menu-horizontal bg-base-200 rounded-box">
             {% if page > 1 %}
@@ -91,7 +155,11 @@
             </li>
         </ul>
     </div>
+    {% else %}
+    <div class="join join-center justify-center md:flex pb-8 pt-12"></div></div>
+    {% endif %}
 
     {% include 'global/footer.html' %}
 </body>
 </html>
+

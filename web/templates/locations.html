@@ -9,12 +9,126 @@
     <div class="h-1/6"></div> 
 
     <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
-        <div class="font-title text-8xl font-black leading-none">Locations</div> 
+        <div class="grid grid-cols-3 gap-5 justify-items-center">
+            <div></div> 
+
+            <div class="font-title text-8xl font-black leading-none">Locations</div> 
+
+            <button class="btn btn-circle btn-accent" onclick="locationFilter.showModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z"/>
+                </svg>
+            </button>
+            <dialog id="locationFilter" class="modal">
+                <div class="modal-box w-11/12 max-w-5xl">
+                    <form method="POST" action="/locations">
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    
+                        <h2 class="font-bold text-3xl justify-left pb-8">Locations filters</h3>
+                        
+                        <div class="grid grid-cols-1 gap-5 justify-items-center px-20 t-4">
+                            <input name="name" type="text" placeholder="Location name" class="input input-bordered input-accent input-sm w-full max-w-full"/>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-5 justify-items-center pt-4">
+                            <select name="type" class="select select-accent w-full select-sm max-w-xs">
+                                <option disabled selected>Type</option>
+                                <option>Planet</option>
+                                <option>Cluster</option>
+                                <option>Space station</option>
+                                <option>Microverse</option>
+                                <option>TV</option>
+                                <option>Resort</option>
+                                <option>Fantasy town</option>
+                                <option>Dream</option>
+                                <option>Dimension</option>
+                                <option>Menagerie</option>
+                                <option>Game</option>
+                                <option>Customs</option>
+                                <option>Daycare</option>
+                                <option>Dwarf planet (Celestial Dwarf)</option>
+                                <option>Miniverse</option>
+                                <option>Teenyverse</option>
+                                <option>Box</option>
+                                <option>Spacecraft</option>
+                                <option>Artificially generated world</option>
+                                <option>Machine</option>
+                                <option>Arcade</option>
+                                <option>Spa</option>
+                                <option>Quadrant</option>
+                                <option>Quasar</option>
+                                <option>Mount</option>
+                                <option>Liquid</option>
+                                <option>Convention</option>
+                                <option>Woods</option>
+                                <option>Diegesis</option>
+                                <option>Non-Diegetic Alternative Reality</option>
+                                <option>Nightmare</option>
+                                <option>Asteroid</option>
+                                <option>Acid Plant</option>
+                                <option>Reality</option>
+                                <option>Death Star</option>
+                                <option>Base</option>
+                                <option>Elemental Rings</option>
+                                <option>Human</option>
+                                <option>Space</option>
+                                <option>Hell</option>
+                                <option>Police Department</option>
+                                <option>Country</option>
+                                <option>Consciousness</option>
+                                <option>Memory</option>
+                                <option>unknown</option>
+                            </select>
+                            <select name="dimension" class="select select-accent w-full select-sm max-w-xs">
+                                <option disabled selected>Dimensions</option>
+                                <option>Dimension C-137</option>
+                                <option>Post-Apocalyptic Dimension</option>
+                                <option>Replacement Dimension</option>
+                                <option>Cronenberg Dimension</option>
+                                <option>Fantasy Dimension</option>
+                                <option>Dimension 5-126</option>
+                                <option>Testicle Monster Dimension</option>
+                                <option>Cromulon Dimension</option>
+                                <option>Dimension C-500A</option>
+                                <option>Dimension K-83</option>
+                                <option>Dimension J19ζ7</option>
+                                <option>Eric Stoltz Mask Dimension</option>
+                                <option>Evil Rick's Target Dimension</option>
+                                <option>Giant Telepathic Spiders Dimension</option>
+                                <option>Unknown dimension</option>
+                                <option>Dimension K-22</option>
+                                <option>Dimension D-99</option>
+                                <option>Dimension D716</option>
+                                <option>Dimension D716-B</option>
+                                <option>Dimension D716-C</option>
+                                <option>Dimension J-22</option>
+                                <option>Dimension C-35</option>
+                                <option>Pizza Dimension</option>
+                                <option>Phone Dimension</option>
+                                <option>Chair Dimension</option>
+                                <option>Fascist Dimension</option>
+                                <option>Fascist Shrimp Dimension</option>
+                                <option>Fascist Teddy Bear Dimension</option>
+                                <option>Wasp Dimension</option>
+                                <option>Tusk Dimension</option>
+                                <option>Magic Dimension</option>
+                                <option>Merged Dimension</option>
+                                <option>unknown</option>
+                            </select>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit" class="btn btn-wide btn-accent">Apply Filters</button>
+                        </div> 
+                    </form>
+                </div>
+            </dialog>
+        </div>
         <div class="h-1/6"></div> 
     </div>
 
     <div class="h-1/6"></div> 
-
+    {% if locations|length > 0 %}
     <div class="overflow-x-auto flex justify-center items-center">
         <table class="table w-4/5">
             <thead>
@@ -37,7 +151,13 @@
             </tbody>
         </table>
     </div>
+    {% else %}
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+        <p class="text-4xl pt-12 mx-auto font-sans font-light">There is nothing here</p> 
+    </div>
+    {% endif %}
     
+    {% if page != 0 %}
     <div class="join join-center justify-center md:flex pb-8 pt-12">
         <ul class="menu menu-horizontal md:menu-horizontal bg-base-200 rounded-box">
             {% if page > 1 %}
@@ -59,6 +179,9 @@
             </li>
         </ul>
     </div>
+    {% else %}
+    <div class="join join-center justify-center md:flex pb-8 pt-12"></div></div>
+    {% endif %}
 
     {% include 'global/footer.html' %}
 </body>

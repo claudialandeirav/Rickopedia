@@ -4,6 +4,7 @@ from web.backend.Character import Character
 from web.backend.Episode import Episode
 from web.backend.Location import Location
 from web.backend.Statistics import Statistics
+from web.backend.Global import Global
 
 def start_app():
     app = Flask(__name__, static_folder='static')
@@ -16,12 +17,27 @@ def start_app():
         return render_template('home.html')
 
     # ---------------------------------- MODULO PERSONAJES
-    @app.route('/characters', methods=['GET'])
+    @app.route('/characters', methods=['GET', 'POST'])
     def characters():
-        page = request.args.get('page', default=1, type=int)
-        characters = Character.results(Character.getAllPaged(page))
-        return render_template('characters.html', characters=characters, page=page)
+        if request.method == 'POST':
+            filter = request.form
+
+            characters = {}
+            if (filter != {}):
+                allInfo, url = Character.filter(filter)
+                if ('error' not in allInfo):
+                    characters = Character.getAllNotPagedBydata(allInfo, url)
+
+            return render_template('characters.html', characters=characters, page=0)
+
+        else:
+            page = request.args.get('page', default=1, type=int)
+            characters = Character.results(Character.getAllPaged(Global.getUrlCharacter(),page))
+
+            return render_template('characters.html', characters=characters, page=page)
     
+
+
     @app.route('/character/<id>', methods=['GET'])
     def character(id):
         character = Character.getById(id)
@@ -40,10 +56,21 @@ def start_app():
                                 origin=origin, location=location, image=image, episodes=episodes, numCharacters=numCharacters)
     
     # ---------------------------------- MODULO EPISODIOS
-    @app.route('/episodes', methods=['GET'])
+    @app.route('/episodes', methods=['GET', 'POST'])
     def episodes():
-        seasons = Episode.getEpisodes()
-        return render_template('episodes.html', seasons=seasons)
+        if request.method == 'POST':
+            filter = request.form
+            seasons = {}
+            if (filter != {}):
+                allInfo = Episode.filter(filter)
+                if ('error' not in allInfo):
+                    seasons = Episode.getEpisodesFilter(allInfo)
+
+            return render_template('episodes.html', seasons=seasons)
+
+        else:
+            seasons = Episode.getEpisodes()
+            return render_template('episodes.html', seasons=seasons)
     
     @app.route('/episode/<id>', methods=['GET'])
     def episode(id):
@@ -59,12 +86,24 @@ def start_app():
         return render_template('episode.html', id=int(id), name=name, air_date=air_date, episode_code=episode_code, characters=characters, summary=summary, seasons=seasons, numEpisodes=numEpisodes)
 
     # ---------------------------------- MODULO LOCALIZACIONES
-    @app.route('/locations', methods=['GET'])
+    @app.route('/locations', methods=['GET', 'POST'])
     def locations():
-        page = request.args.get('page', default=1, type=int)
-        locations = Location.results(Location.getAllPaged(page))
+        if request.method == 'POST':
+            filter = request.form
 
-        return render_template('locations.html', locations=locations, page=page)
+            locations = {}
+            if (filter != {}):
+                allInfo, url = Location.filter(filter)
+                if ('error' not in allInfo):
+                    locations = Location.getAllNotPagedBydata(allInfo, url)
+
+            return render_template('locations.html', locations=locations, page=0)
+
+        else:
+            page = request.args.get('page', default=1, type=int)
+            locations = Location.results(Location.getAllPaged(page))
+
+            return render_template('locations.html', locations=locations, page=page)
     
     @app.route('/location/<id>', methods=['GET'])
     def location(id):
@@ -85,6 +124,7 @@ def start_app():
         numCharacters = Statistics.getNumCharacters()
 
         allCharacters = Character.getAllNotPaged()
+        allLocations = Location.getAllNotPaged()
         
         genderCharacterInfo = Statistics.createCircularGraphic(Statistics.getGenderCharacterInfo(allCharacters))
         statusCharacterInfo = Statistics.createCircularGraphic(Statistics.getStatusCharacterInfo(allCharacters))
@@ -93,11 +133,17 @@ def start_app():
         statusNumInfo = Statistics.getNumStatusInfo(allCharacters)
         speciesNumInfo = Statistics.getNumSpecieInfo(allCharacters)
 
+        typeNumInfo = Statistics.getNumTypeInfo(allLocations)
+        dimensionNumInfo = Statistics.getNumDimensionsInfo(allLocations)
+        
+        episodesPerSeasonNumInfo = Statistics.getEpisodesPerSeasonInfo()
+
         return render_template('statistics.html', 
                                numEpisodes = int(numEpisodes), numLocations = int(numLocations), numCharacters = int(numCharacters),
                                genderCharacterInfo = genderCharacterInfo, genderNumInfo = genderNumInfo,
                                statusCharacterInfo = statusCharacterInfo, statusNumInfo = statusNumInfo,
-                               speciesNumInfo = speciesNumInfo)
+                               speciesNumInfo = speciesNumInfo, typeNumInfo = typeNumInfo, dimensionNumInfo = dimensionNumInfo,
+                               episodesPerSeasonNumInfo = episodesPerSeasonNumInfo)
     
     # ---------------------------------- MODULO ABOUT
     @app.route('/about', methods=['GET'])

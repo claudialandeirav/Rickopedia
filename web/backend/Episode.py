@@ -44,18 +44,8 @@ class Episode:
     Devuelve toda la información dando la posiiblidad de filtrar por nombre, fecha de salida del episodio o codigo del episodio
     Todos los parametros son optativos
     '''
-    def filter(name=None, air_date=None, episode=None):
-        param = {}
-
-        if name:
-            param['name'] = name
-        if air_date:
-            param['air_date'] = air_date
-        if episode:
-            param['episode'] = episode
-
-        filter = '&'.join(f'{key}={value}' for key, value in param.items())
-
+    def filter (filters=None):
+        filter = '&'.join(f'{key}={value}' for key, value in filters.items())
         if filter:
             url = f'{Global.getUrlEpisode()}?{filter}'
 
@@ -168,6 +158,20 @@ class Episode:
         code[season_num] = episode_num
         return code
     
+
+    def getEpisodesFilter(data):
+        listIdEpisodes = []
+        for i in Episode.results(data):
+            listIdEpisodes.append(int(i['id']))
+
+        episodes = Episode.getByList(listIdEpisodes)
+        seasons = {}
+        for episode in episodes:
+            season_num = episode['episode'][:3]
+            if season_num not in seasons:
+                seasons[season_num] = []
+            seasons[season_num].append(episode)
+        return seasons
 
     '''
     Funcion getEpisodeDescriptions

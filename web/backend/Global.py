@@ -47,5 +47,6 @@ class Global:
 
         if response.status_code == 200:
             data = response.json()
-
+        if response.status_code == 404:
+            data = {'error': 'There is nothing here'}
         return data
