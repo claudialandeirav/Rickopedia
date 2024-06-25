@@ -56,10 +56,21 @@ def start_app():
                                 origin=origin, location=location, image=image, episodes=episodes, numCharacters=numCharacters)
     
     # ---------------------------------- MODULO EPISODIOS
-    @app.route('/episodes', methods=['GET'])
+    @app.route('/episodes', methods=['GET', 'POST'])
     def episodes():
-        seasons = Episode.getEpisodes()
-        return render_template('episodes.html', seasons=seasons)
+        if request.method == 'POST':
+            filter = request.form
+            seasons = {}
+            if (filter != {}):
+                allInfo = Episode.filter(filter)
+                if ('error' not in allInfo):
+                    seasons = Episode.getEpisodesFilter(allInfo)
+
+            return render_template('episodes.html', seasons=seasons)
+
+        else:
+            seasons = Episode.getEpisodes()
+            return render_template('episodes.html', seasons=seasons)
     
     @app.route('/episode/<id>', methods=['GET'])
     def episode(id):

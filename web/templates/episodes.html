@@ -22,27 +22,19 @@
             </button>
             <dialog id="episodeFilter" class="modal">
                 <div class="modal-box w-11/12 max-w-5xl">
-                    <form method="dialog">
+                    <form method="POST" action="/episodes">
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    </form>
-                    
-                    <h2 class="font-bold text-3xl justify-left pb-8">Episodes filters</h3>
-                    
-                    <div class="grid grid-cols-2 gap-5 justify-items-center pt-4">
-                        <input type="text" placeholder="Episode name" class="input input-bordered input-accent input-sm w-10/12 pr-10"/>
-                        <select class="select select-accent w-full select-sm max-w-xs">
-                            <option disabled selected>Seasons</option>
-                            <option>Season 01</option>
-                            <option>Season 02</option>
-                            <option>Season 03</option>
-                            <option>Season 04</option>
-                            <option>Season 05</option>
-                        </select>
-                    </div>
 
-                    <div class="pt-4">
-                        <a class="btn btn-wide btn-accent" href="">Apply Filters</a>
-                    </div> 
+                        <h2 class="font-bold text-3xl justify-left pb-8">Episodes filters</h3>
+                        
+                        <div class="grid grid-cols-1 gap-5 justify-items-center pt-4">
+                            <input type="text" name="name" placeholder="Episode name" class="input input-bordered input-accent input-sm w-10/12 pr-10"/>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit" class="btn btn-wide btn-accent">Apply Filters</button>
+                        </div> 
+                    </form>
                 </div>
             </dialog>
         </div>
@@ -51,7 +43,7 @@
     </div>
 
     <div class="h-1/6"></div> 
-
+    {% if seasons.items()|length > 0 %}
     {% for season, episodes in seasons.items() %}
     <div class="flex justify-center items-center px-6 pb-4 pt-2">
         <div tabindex="0" class="collapse collapse-arrow bg-base-200 w-4/5">
@@ -83,8 +75,12 @@
         </div>
     </div>
     {% endfor %}
-     
-    <div class="h-1/5"></div> 
+    {% else %}
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+        <p class="text-4xl pt-12 mx-auto font-sans font-light">There is nothing here</p> 
+    </div>
+    {% endif %}
+    <div class="join join-center justify-center md:flex pb-8 pt-12"></div></div>
 
     {% include 'global/footer.html' %}
 </body>
