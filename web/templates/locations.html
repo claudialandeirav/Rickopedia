@@ -21,105 +21,106 @@
             </button>
             <dialog id="locationFilter" class="modal">
                 <div class="modal-box w-11/12 max-w-5xl">
-                    <form method="dialog">
+                    <form method="POST" action="/locations">
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    </form>
-                    <h2 class="font-bold text-3xl justify-left pb-8">Locations filters</h3>
                     
-                    <div class="grid grid-cols-1 gap-5 justify-items-center px-20 t-4">
-                        <input type="text" placeholder="Location name" class="input input-bordered input-accent input-sm w-full max-w-full"/>
-                    </div>
+                        <h2 class="font-bold text-3xl justify-left pb-8">Locations filters</h3>
+                        
+                        <div class="grid grid-cols-1 gap-5 justify-items-center px-20 t-4">
+                            <input name="name" type="text" placeholder="Location name" class="input input-bordered input-accent input-sm w-full max-w-full"/>
+                        </div>
 
-                    <div class="grid grid-cols-2 gap-5 justify-items-center pt-4">
-                        <select class="select select-accent w-full select-sm max-w-xs">
-                            <option disabled selected>Type</option>
-                            <option>Planet</option>
-                            <option>Cluster</option>
-                            <option>Space station</option>
-                            <option>Microverse</option>
-                            <option>TV</option>
-                            <option>Resort</option>
-                            <option>Fantasy town</option>
-                            <option>Dream</option>
-                            <option>Dimension</option>
-                            <option>Menagerie</option>
-                            <option>Game</option>
-                            <option>Customs</option>
-                            <option>Daycare</option>
-                            <option>Dwarf planet (Celestial Dwarf)</option>
-                            <option>Miniverse</option>
-                            <option>Teenyverse</option>
-                            <option>Box</option>
-                            <option>Spacecraft</option>
-                            <option>Artificially generated world</option>
-                            <option>Machine</option>
-                            <option>Arcade</option>
-                            <option>Spa</option>
-                            <option>Quadrant</option>
-                            <option>Quasar</option>
-                            <option>Mount</option>
-                            <option>Liquid</option>
-                            <option>Convention</option>
-                            <option>Woods</option>
-                            <option>Diegesis</option>
-                            <option>Non-Diegetic Alternative Reality</option>
-                            <option>Nightmare</option>
-                            <option>Asteroid</option>
-                            <option>Acid Plant</option>
-                            <option>Reality</option>
-                            <option>Death Star</option>
-                            <option>Base</option>
-                            <option>Elemental Rings</option>
-                            <option>Human</option>
-                            <option>Space</option>
-                            <option>Hell</option>
-                            <option>Police Department</option>
-                            <option>Country</option>
-                            <option>Consciousness</option>
-                            <option>Memory</option>
-                            <option>unknown</option>
-                        </select>
-                        <select class="select select-accent w-full select-sm max-w-xs">
-                            <option disabled selected>Dimensions</option>
-                            <option>Dimension C-137</option>
-                            <option>Post-Apocalyptic Dimension</option>
-                            <option>Replacement Dimension</option>
-                            <option>Cronenberg Dimension</option>
-                            <option>Fantasy Dimension</option>
-                            <option>Dimension 5-126</option>
-                            <option>Testicle Monster Dimension</option>
-                            <option>Cromulon Dimension</option>
-                            <option>Dimension C-500A</option>
-                            <option>Dimension K-83</option>
-                            <option>Dimension J19ζ7</option>
-                            <option>Eric Stoltz Mask Dimension</option>
-                            <option>Evil Rick's Target Dimension</option>
-                            <option>Giant Telepathic Spiders Dimension</option>
-                            <option>Unknown dimension</option>
-                            <option>Dimension K-22</option>
-                            <option>Dimension D-99</option>
-                            <option>Dimension D716</option>
-                            <option>Dimension D716-B</option>
-                            <option>Dimension D716-C</option>
-                            <option>Dimension J-22</option>
-                            <option>Dimension C-35</option>
-                            <option>Pizza Dimension</option>
-                            <option>Phone Dimension</option>
-                            <option>Chair Dimension</option>
-                            <option>Fascist Dimension</option>
-                            <option>Fascist Shrimp Dimension</option>
-                            <option>Fascist Teddy Bear Dimension</option>
-                            <option>Wasp Dimension</option>
-                            <option>Tusk Dimension</option>
-                            <option>Magic Dimension</option>
-                            <option>Merged Dimension</option>
-                            <option>unknown</option>
-                        </select>
-                    </div>
+                        <div class="grid grid-cols-2 gap-5 justify-items-center pt-4">
+                            <select name="type" class="select select-accent w-full select-sm max-w-xs">
+                                <option disabled selected>Type</option>
+                                <option>Planet</option>
+                                <option>Cluster</option>
+                                <option>Space station</option>
+                                <option>Microverse</option>
+                                <option>TV</option>
+                                <option>Resort</option>
+                                <option>Fantasy town</option>
+                                <option>Dream</option>
+                                <option>Dimension</option>
+                                <option>Menagerie</option>
+                                <option>Game</option>
+                                <option>Customs</option>
+                                <option>Daycare</option>
+                                <option>Dwarf planet (Celestial Dwarf)</option>
+                                <option>Miniverse</option>
+                                <option>Teenyverse</option>
+                                <option>Box</option>
+                                <option>Spacecraft</option>
+                                <option>Artificially generated world</option>
+                                <option>Machine</option>
+                                <option>Arcade</option>
+                                <option>Spa</option>
+                                <option>Quadrant</option>
+                                <option>Quasar</option>
+                                <option>Mount</option>
+                                <option>Liquid</option>
+                                <option>Convention</option>
+                                <option>Woods</option>
+                                <option>Diegesis</option>
+                                <option>Non-Diegetic Alternative Reality</option>
+                                <option>Nightmare</option>
+                                <option>Asteroid</option>
+                                <option>Acid Plant</option>
+                                <option>Reality</option>
+                                <option>Death Star</option>
+                                <option>Base</option>
+                                <option>Elemental Rings</option>
+                                <option>Human</option>
+                                <option>Space</option>
+                                <option>Hell</option>
+                                <option>Police Department</option>
+                                <option>Country</option>
+                                <option>Consciousness</option>
+                                <option>Memory</option>
+                                <option>unknown</option>
+                            </select>
+                            <select name="dimension" class="select select-accent w-full select-sm max-w-xs">
+                                <option disabled selected>Dimensions</option>
+                                <option>Dimension C-137</option>
+                                <option>Post-Apocalyptic Dimension</option>
+                                <option>Replacement Dimension</option>
+                                <option>Cronenberg Dimension</option>
+                                <option>Fantasy Dimension</option>
+                                <option>Dimension 5-126</option>
+                                <option>Testicle Monster Dimension</option>
+                                <option>Cromulon Dimension</option>
+                                <option>Dimension C-500A</option>
+                                <option>Dimension K-83</option>
+                                <option>Dimension J19ζ7</option>
+                                <option>Eric Stoltz Mask Dimension</option>
+                                <option>Evil Rick's Target Dimension</option>
+                                <option>Giant Telepathic Spiders Dimension</option>
+                                <option>Unknown dimension</option>
+                                <option>Dimension K-22</option>
+                                <option>Dimension D-99</option>
+                                <option>Dimension D716</option>
+                                <option>Dimension D716-B</option>
+                                <option>Dimension D716-C</option>
+                                <option>Dimension J-22</option>
+                                <option>Dimension C-35</option>
+                                <option>Pizza Dimension</option>
+                                <option>Phone Dimension</option>
+                                <option>Chair Dimension</option>
+                                <option>Fascist Dimension</option>
+                                <option>Fascist Shrimp Dimension</option>
+                                <option>Fascist Teddy Bear Dimension</option>
+                                <option>Wasp Dimension</option>
+                                <option>Tusk Dimension</option>
+                                <option>Magic Dimension</option>
+                                <option>Merged Dimension</option>
+                                <option>unknown</option>
+                            </select>
+                        </div>
 
-                    <div class="pt-4">
-                        <a class="btn btn-wide btn-accent" href="">Apply Filters</a>
-                    </div> 
+                        <div class="pt-4">
+                            <button type="submit" class="btn btn-wide btn-accent">Apply Filters</button>
+                        </div> 
+                    </form>
                 </div>
             </dialog>
         </div>
@@ -127,7 +128,7 @@
     </div>
 
     <div class="h-1/6"></div> 
-
+    {% if locations|length > 0 %}
     <div class="overflow-x-auto flex justify-center items-center">
         <table class="table w-4/5">
             <thead>
@@ -150,7 +151,13 @@
             </tbody>
         </table>
     </div>
+    {% else %}
+    <div class="rounded-box flex grow flex-col px-6 pb-8 pt-12 text-center">
+        <p class="text-4xl pt-12 mx-auto font-sans font-light">There is nothing here</p> 
+    </div>
+    {% endif %}
     
+    {% if page != 0 %}
     <div class="join join-center justify-center md:flex pb-8 pt-12">
         <ul class="menu menu-horizontal md:menu-horizontal bg-base-200 rounded-box">
             {% if page > 1 %}
@@ -172,6 +179,9 @@
             </li>
         </ul>
     </div>
+    {% else %}
+    <div class="join join-center justify-center md:flex pb-8 pt-12"></div></div>
+    {% endif %}
 
     {% include 'global/footer.html' %}
 </body>

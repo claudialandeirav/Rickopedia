@@ -75,12 +75,24 @@ def start_app():
         return render_template('episode.html', id=int(id), name=name, air_date=air_date, episode_code=episode_code, characters=characters, summary=summary, seasons=seasons, numEpisodes=numEpisodes)
 
     # ---------------------------------- MODULO LOCALIZACIONES
-    @app.route('/locations', methods=['GET'])
+    @app.route('/locations', methods=['GET', 'POST'])
     def locations():
-        page = request.args.get('page', default=1, type=int)
-        locations = Location.results(Location.getAllPaged(page))
+        if request.method == 'POST':
+            filter = request.form
 
-        return render_template('locations.html', locations=locations, page=page)
+            locations = {}
+            if (filter != {}):
+                allInfo, url = Location.filter(filter)
+                if ('error' not in allInfo):
+                    locations = Location.getAllNotPagedBydata(allInfo, url)
+
+            return render_template('locations.html', locations=locations, page=0)
+
+        else:
+            page = request.args.get('page', default=1, type=int)
+            locations = Location.results(Location.getAllPaged(page))
+
+            return render_template('locations.html', locations=locations, page=page)
     
     @app.route('/location/<id>', methods=['GET'])
     def location(id):

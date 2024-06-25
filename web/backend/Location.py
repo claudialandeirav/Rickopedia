@@ -37,7 +37,16 @@ class Location:
 
         return locations
 
-    
+    def getAllNotPagedBydata(data, filters):
+        url = f'{Global.getUrlLocation()}?page=1&{filters}'
+        locations = []
+        
+        while url:
+            data = requests.get(url).json()
+            locations.extend(data['results'])
+            url = data['info']['next']
+
+        return locations
     '''
     Funcion get
     Autora: Claudia Landeira
@@ -72,20 +81,12 @@ class Location:
     Devuelve toda la información dando la posiiblidad de filtrar por nombre y/o tipo
     Todos los parametros son optativos
     '''
-    def filter(name=None, type=None):
-        param = {}
-
-        if name:
-            param['name'] = name
-        if type:
-            param['type'] = type
-
-        filter = '&'.join(f'{key}={value}' for key, value in param.items())
-
+    def filter (filters=None):
+        filter = '&'.join(f'{key}={value}' for key, value in filters.items())
         if filter:
             url = f'{Global.getUrlLocation()}?{filter}'
 
-        return Global.data(url)
+        return Global.data(url), filter
     
     '''
     Funcion info
